@@ -1,0 +1,44 @@
+.wrapper{
+  margin:0 auto;
+  width:100%;
+  background: white;
+  margin:30px;
+  height:100%;
+
+}
+.btn-selected{
+  border:1px solid rgb(173, 104, 102);
+  background: rgb(250, 233, 232);
+  color:rgb(173, 104, 102)
+}
+.selected-icon{
+  color:rgb(173, 104, 102);
+  font-size: 15px;
+  padding-bottom: 5px;
+
+
+}
+.buttons{
+  margin-left:10px;
+  font-weight: 350
+}
+.btn-default{
+  color:black
+}
+.one-button-row{
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+  margin-top:15px;
+  align-items: center
+}
+.content{
+  margin:30px
+}
+.adTargetInput {
+  width:500px;
+}
+.targetInput{
+  font-size: 80%;
+  color:black;
+}

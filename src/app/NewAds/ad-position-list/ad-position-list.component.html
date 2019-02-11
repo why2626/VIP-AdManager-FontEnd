@@ -1,0 +1,99 @@
+<div class='wrap alignSide'>
+  <div class='listAreaWrap'>
+  <div class='listArea'>
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+<!--- Note that these columns can be defined in any order.
+      The actual rendered columns are set as a property on the row definition" -->
+<!-- Checkbox Column -->  <!--(click)='selectedAdPos(selectedAd)'-->
+<ng-container matColumnDef="select">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let row">
+        <mat-radio-group [(ngModel)]='selectedAd'>
+            <mat-radio-button
+            [checked]="selection.isSelected(row)"
+            [value]='row.id'
+            (click)='selectedAdPos(selectedAd)'
+            >
+          </mat-radio-button>
+        </mat-radio-group>
+        </mat-cell>
+  </ng-container>
+
+<!-- Position Column -->
+<ng-container matColumnDef="position">
+<mat-header-cell *matHeaderCellDef=""> 资源位 </mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+</ng-container>
+
+<!-- Name Column -->
+<ng-container matColumnDef="picSize" matColumnDef="picSize" >
+<mat-header-cell *matHeaderCellDef=""  > 图片尺寸 </mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element.picSize}} </mat-cell>
+  </ng-container>
+
+
+<!-- Weight Column -->
+<ng-container matColumnDef="exposure" matColumnDef="exposure">
+<mat-header-cell *matHeaderCellDef=""> 曝光量 </mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element.exposure}} </mat-cell>
+  </ng-container>
+
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="clickRate" matColumnDef="clickRate">
+<mat-header-cell *matHeaderCellDef=""> 点击率 </mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element.clickRate}} </mat-cell>
+  </ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="clickCost" matColumnDef="clickCost">
+<mat-header-cell *matHeaderCellDef=""> 点击成本 </mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element.clickCost}} </mat-cell>
+</ng-container>
+
+
+<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+<mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+</div>
+<div class='upLoadArea' style='margin-top:50px'>
+    <p style='margin-left:-50px'>
+        广告创意
+      </p>
+      <div>
+      <div style='width:250px;height:150px;background: rgb(235, 234, 234);border: 1px dashed gray'>
+        <div style='display: flex;flex-direction: column;align-content: center'>
+          <p style='text-align: center'>上传图片</p>
+          <p style='text-align: center' *ngIf='selectedAd==1'>750x300    100k</p>
+          <p style='text-align: center' *ngIf='selectedAd==2'>750x156    100k</p>
+          <p style='text-align: center' *ngIf='selectedAd==3'>720x226    100k</p>
+          <p style='text-align: center' *ngIf='selectedAd==4'>1065x183    100k</p>
+          <p style='text-align: center' *ngIf='selectedAd==5'>750x256    200k</p>
+          <p style='text-align: center' *ngIf='selectedAd==6'>720x226    400k</p>
+
+        </div>
+      </div>
+      </div>
+</div>
+
+  </div>
+<div class='phoneArea'>
+  <div class='phone' style='background-image: url(/assets/img/phone.png);background-size: cover' >
+
+    <img *ngIf='selectedAd==1' class='adImg' src='/assets/img/首页焦点第三四帧.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;position: absolute'>
+    <img *ngIf='selectedAd==2' class='adImg' src='/assets/img/收藏顶部及物流页底部横幅.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
+    <img *ngIf='selectedAd==3' class='adImg' src='/assets/img/个人设置页顶部轮播.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
+    <img *ngIf='selectedAd==4' class='adImg' src='/assets/img/优惠券页顶部横幅.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
+    <img *ngIf='selectedAd==5' class='adImg' src='/assets/img/美妆焦点第二帧.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
+    <img *ngIf='selectedAd==6' class='adImg' src='/assets/img/美妆频道精彩活动运营位.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
+
+    </div>
+    </div>
+
+
+
+
+</div>
+

@@ -1,0 +1,24 @@
+.title{
+   display: flex;
+   justify-content: center;
+   padding-top:30px;
+   color:rgb(44,56,71);
+   font-size:19px;
+}
+mat-list{
+  margin-top:50px;
+  display: flex;
+  flex-direction: column;
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.material-icons{
+  padding-right:8px;
+  padding-bottom: 5px;
+}
+
+
+button{
+  padding:10px
+}

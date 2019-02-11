@@ -1,0 +1,40 @@
+mat-table{
+  font-size: 70%;
+}
+.mat-column-position{
+  flex: 0 0 180px;
+  font-size: 98%;
+}
+.mat-column-picSize, .mat-column-exposure, .mat-column-clickRate, .mat-column-clickCost{
+  font-size: 98%;
+  flex: 0 0 80px;
+}
+.mat-column-select{
+  flex: 0 0 50px;
+}
+.cdk-cell-title{
+  height:20px;
+}
+.listArea{
+  width:550px;
+
+}
+.wrap{
+  display: flex;
+  flex-direction: row;
+  height:100%;
+
+}
+.phoneArea{
+  width:255px;
+  margin-left: 60px;
+  display: block;
+  height:504px;
+}
+.alignSide{
+  margin-left: 50px
+}
+.phone{
+  width:255px;
+  height: 504px
+}

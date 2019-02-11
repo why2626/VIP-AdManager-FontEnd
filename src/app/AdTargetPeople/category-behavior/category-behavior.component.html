@@ -1,0 +1,48 @@
+<div class='wrapper'>
+  <div class='title'>
+      <p>
+          一二级品类
+       </p>
+  </div>
+<div class='selectArea'>
+
+<div>
+  <div *ngFor = 'let item of checkListObject | keyvalue:keepOriginalOrder; let i = index'>
+    <mat-accordion >
+      <mat-expansion-panel style='width:315px'
+      [expanded]="step === i"
+      (opened)="setStep(i)"
+      class="mat-elevation-z0"
+      >
+          <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
+      <mat-checkbox
+      [(ngModel)]="masterSelected[i]"
+      name="shoes" value="m1"
+      (change)="checkUncheckAll(item,i)"
+      (click)="$event.stopPropagation()"
+       >{{item.key}}</mat-checkbox>
+   </mat-expansion-panel-header>
+      <div>
+      <mat-list>
+      <mat-list-item *ngFor='let items of item.value' style='height:36px'>
+
+      <mat-checkbox
+      [(ngModel)]="items.isSelected"
+      name="shoes"
+      value="{{items.id}}"
+      (change)="isAllSelected(item,i)"
+      >{{items.name}}</mat-checkbox>
+
+      </mat-list-item >
+        </mat-list>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+  </div>
+</div>
+</div>
+
+<div class='showSelectedArea'>
+    <code>{{checkedList}}</code>
+</div>
+</div>

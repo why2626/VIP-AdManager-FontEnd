@@ -1,0 +1,32 @@
+.adNameInput {
+  width:500px;
+}
+.adInput{
+  font-size: 80%;
+  color:black;
+}
+mat-radio-group{
+  display: flex;
+  flex-direction: column
+}
+mat-radio-button{
+  padding:10px;
+  font-size: 80%;
+  color:black;
+}
+.startInput{
+  width:120px;
+}
+.checkbox{
+  margin-left: 40px;
+  font-size: 80%;
+  color:black;
+}
+.datePickerWrap{
+  margin-left: 100px;
+  margin-top:30px;
+  color:black
+}
+.alignside{
+  margin-left: 50px
+}

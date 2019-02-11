@@ -1,0 +1,71 @@
+<div class='wrapper'>
+  <div class='content'>
+
+<h3 style='color:black'>
+  新建人群
+</h3>
+
+<h4 style='color:black'>基本信息</h4>
+<div class='one-button-row'>
+  <label style='font-size: 90%;width:100px'>性别</label>
+  <div class='buttons-area'>
+  <button mat-stroked-button
+  *ngFor = 'let button of genderButtons; let i = index'
+  [ngClass]="button.selected ? 'btn-selected' : 'btn-default'"
+  (click)="genderMultiSelect(i)"
+  class='buttons'>
+      <i *ngIf = 'button.selected'  class="material-icons selected-icon" style='margin-left:-18px'>done</i>
+      {{button.name}}
+  </button>
+</div>
+</div>
+
+<div class='one-button-row'>
+    <label style='font-size: 90%;width:100px'>年龄</label>
+    <div class='buttons-area'>
+    <button mat-stroked-button
+    *ngFor = 'let button of ageButtons; let i = index'
+    [ngClass]="button.selected ? 'btn-selected' : 'btn-default'"
+    (click)="ageMultiSelect(i)"
+    class='buttons'
+    style='padding:0px 25px;'>
+        <i *ngIf = 'button.selected'  class="material-icons selected-icon" style='margin-left:-19px'>done</i>
+        {{button.name}}
+    </button>
+  </div>
+  </div>
+
+  <div>
+  <h4 style='color:black'>行为轨迹</h4>
+  <mat-tab-group animationDuration="0ms">
+      <mat-tab label="用户行为"> <app-user-behavior></app-user-behavior></mat-tab>
+      <mat-tab label="品类行为"> <app-category-behavior></app-category-behavior> </mat-tab>
+      <mat-tab label="品牌行为"> Content 3 </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div style='display: flex;flex-direction: column'>
+    <div class='one-button-row'>
+      <label style='font-size: 90%;width:100px'>APP平台</label>
+      <mat-radio-group style='display: flex;flex-direction: column;padding:10px;color:black'>
+          <mat-radio-button value="1" checked style='padding:10px;'>ios</mat-radio-button>
+          <mat-radio-button value="2" style='padding:10px;'>Android</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class='one-button-row'>
+      <label style='font-size: 90%;width:100px'>人群名称</label>
+      <mat-form-field hintlabel="最多50个字" class='adTargetInput alignside'>
+          <input matInput #input="" maxlength="50" placeholder="请输入人群名称" [formControl]="targetName" required="" class='targetInput'>
+          <mat-hint align="end">{{input.value?.length || 0}}/50</mat-hint>
+          <mat-error *ngIf="targetName.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div style='margin-left:400px;margin-top:50px;'>
+
+
+    <button mat-raised-button color='primary' >创建人群</button>
+    <button mat-raised-button style='margin-left: 20px'>返回</button>
+  </div>
+  </div>
+</div>
