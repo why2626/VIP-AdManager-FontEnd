@@ -1,7 +1,11 @@
 <div class='one-button-row'>
 
 <div class='one-button-row'>
-  <label style='font-size: 90%;width:100px'>最后浏览时间</label>
+  <label style='font-size: 90%;width:120px'>{{bahaviorTitle[0]}}
+    <i class="material-icons"
+    style='font-size: 18px'
+    matTooltip="唯品会用户最近一次浏览唯品会时间距今时间分布">
+      contact_support</i></label>
   <div class='buttons-area'>
   <button mat-stroked-button
   *ngFor = 'let button of buttons_1; let i = index'
@@ -19,7 +23,11 @@
 <div  class='one-button-row'>
 
     <div class='one-button-row'>
-      <label style='font-size: 90%;width:100px'>最后收藏时间</label>
+      <label style='font-size: 90%;width:120px'>{{bahaviorTitle[1]}}
+          <i class="material-icons"
+    style='font-size: 18px'
+    matTooltip="唯品会用户最近一次有收藏唯品会商品行为的时间距今时间分布">
+      contact_support</i></label>
       <div class='buttons-area'>
       <button mat-stroked-button
       *ngFor = 'let button of buttons_2; let i = index'
@@ -37,7 +45,11 @@
     <div class='one-button-row'>
 
         <div class='one-button-row'>
-          <label style='font-size: 90%;width:100px'>最后购物车放弃时间</label>
+          <label style='font-size: 90%;width:120px'>{{bahaviorTitle[2]}}
+              <i class="material-icons"
+    style='font-size: 18px'
+    matTooltip="唯品会用户最近一次有把唯品会商品加入购物车主动或超时被系统清除购物车的时间距今时间分布">
+      contact_support</i></label>
           <div class='buttons-area'>
           <button mat-stroked-button
           *ngFor = 'let button of buttons_3; let i = index'
@@ -54,7 +66,11 @@
         <div class='one-button-row'>
 
             <div class='one-button-row'>
-              <label style='font-size: 90%;width:100px'>最后加入购物车时间</label>
+              <label style='font-size: 90%;width:120px'>{{bahaviorTitle[3]}}
+                  <i class="material-icons"
+    style='font-size: 18px'
+    matTooltip="唯品会用户最近一次有把唯品会商品加入购物车行为的时间距今时间分布，不论后续是否购买或者购物车放弃，不论后续有没有再次加购或购买行为">
+      contact_support</i></label>
               <div class='buttons-area'>
               <button mat-stroked-button
               *ngFor = 'let button of buttons_4; let i = index'
@@ -71,7 +87,12 @@
             <div class='one-button-row'>
 
                 <div class='one-button-row'>
-                  <label style='font-size: 90%;width:100px'>最后购买时间</label>
+                  <label style='font-size: 90%;width:120px'>{{bahaviorTitle[4]}}
+                      <i class="material-icons"
+                      style='font-size: 18px'
+                      matTooltip="唯品会用户最近一次有购买唯品会商品行为的时间距今时间分布">
+                        contact_support</i>
+                  </label>
                   <div class='buttons-area'>
                   <button mat-stroked-button
                   *ngFor = 'let button of buttons_5; let i = index'
@@ -85,3 +106,7 @@
                 </div>
                 </div>
                 </div>
+                <p>
+                    {{bahaviorTitle[0]}}：{{selectedButton_1}}
+
+               </p>

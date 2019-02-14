@@ -12,9 +12,8 @@ import { AdTargetModule } from './AdTargetPeople/ad-target.module';
 @NgModule({
   declarations: [
     AppComponent,
-
-
   ],
+  
   imports: [
     BrowserModule,
     SharedModule,

@@ -1,10 +1,18 @@
+.one-button-row{
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+  margin-top:15px;
+  align-items: center
+}
+
 .btn-selected{
   border:1px solid rgb(50, 156, 98);;
   background: rgb(234, 248, 242);
   color:rgb(50, 156, 98);
 }
 .selected-icon{
-  color:rgb(50, 156, 98);;
+  color:rgb(50, 156, 98);
   font-size: 15px;
   padding-bottom: 5px;
 

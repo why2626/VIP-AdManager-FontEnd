@@ -1,12 +1,11 @@
 .wrapper{
   display: flex;
   flex-direction: row;
-  padding:20px
-
 }
 .showSelectedArea{
-  width:250px;
-  height:300px;
+  width:315px;
+  height:384px;
+  overflow: scroll;
   border: 1px solid rgb(221, 220, 220);
   border-radius: 8px;
 }
@@ -22,4 +21,8 @@ mat-checkbox{
   font-size: 13px;
   color:#251f3d;
   font-weight: 400;
+}
+.title, .selectArea, .showSelectedArea{
+  margin:20px;
+  
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+//import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-user-behavior',
@@ -6,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-behavior.component.scss']
 })
 export class UserBehaviorComponent implements OnInit {
+
+  @Input() bahaviorTitle = [
+    '最后浏览时间','最后收藏时间','最后购物车放弃时间','最后加入购物车时间','最后购买时间'
+  ];
+
+  @Output() change: EventEmitter<string> = new EventEmitter<string>()
+  selectedButton_1: string;
 
   buttons_1 = [
     {name:'最近3天', selected: false},
@@ -59,6 +67,10 @@ export class UserBehaviorComponent implements OnInit {
           this.buttons_1[i].selected = false;
         }
        }
+       this.selectedButton_1 = this.bahaviorTitle[0] +'：' + this.buttons_1[j]['name']
+       if(!this.buttons_1[j].selected)
+       {this.selectedButton_1=''}
+       this.change.emit(this.selectedButton_1);
     }
     singleSelectButton_2(j: number){
       this.buttons_2[j].selected = !this.buttons_2[j].selected;
@@ -92,5 +104,7 @@ export class UserBehaviorComponent implements OnInit {
                 }
                }
             }
+
+
   }
 

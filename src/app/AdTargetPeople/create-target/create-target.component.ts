@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -8,25 +8,15 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class CreateTargetComponent implements OnInit {
 
+
+  selectedPlatform = 'iOS';
   buttons = []
 
+  selectedItems: string;
+  ageSelectedItems: any;
+  genderSelectedItems: any;
 
-  genderButtons = [
-    {name:"女", selected: false},
-    {name:"男", selected: false}
-  ]
 
-  ageButtons = [
-    {name:'60前', selected: false},
-    {name:'60后', selected: false},
-    {name:'70后', selected: false},
-    {name:'80后', selected: false},
-    {name:'85后', selected: false},
-    {name:'90后', selected: false},
-    {name:'95后', selected: false},
-    {name:'00后', selected: false},
-
-  ]
   targetName = new FormControl('',[Validators.required])
 
   constructor() { }
@@ -41,15 +31,16 @@ export class CreateTargetComponent implements OnInit {
      }
     }
   }
-//性别多项选择
-  genderMultiSelect(j: number){
-    this.genderButtons[j].selected = !this.genderButtons[j].selected;
-  }
-//年龄多项选择
-  ageMultiSelect(j: number){
-    this.ageButtons[j].selected = !this.ageButtons[j].selected;
-  }
   getErrorMessage() {
     return this.targetName.hasError('required') ? '人群名称不能为空' : '';
   }
+    selectChange(event: string){
+       this.selectedItems = `${event}`;
+    }
+    ageSelectChange(event: string){
+      this.ageSelectedItems = `${event}`;
+    }
+    genderSelectChange(event: string){
+      this.genderSelectedItems = `${event}`;
+    }
 }

@@ -5,6 +5,9 @@
        </p>
   </div>
 <div class='selectArea'>
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
 
 <div>
   <div *ngFor = 'let item of checkListObject | keyvalue:keepOriginalOrder; let i = index'>
@@ -43,6 +46,11 @@
 </div>
 
 <div class='showSelectedArea'>
-    <code>{{checkedList}}</code>
+  <p>已选</p>
+    <code>{{selectedItems}}</code>
 </div>
+</div>
+
+<div>
+  <app-user-behavior [bahaviorTitle]='categoryBehavior'></app-user-behavior>
 </div>
