@@ -1,0 +1,52 @@
+html,body{
+  height: 100%;
+  width:100%;
+  margin:0;
+  padding:0;
+}
+body {
+  background-image: linear-gradient(to buttom right , #124485, rgb(25,137,70)) !important;
+}
+mat-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:270px;
+  height: 380px;
+  margin:0 auto
+}
+mat-form-field{
+  display: flex;
+  flex-direction: column;
+}
+mat-card-actions{
+  display: flex;
+  flex-direction: row;
+}
+mat-card-actions p{
+  font-size: 70%;
+  margin:0;
+  margin-left: -25px;
+  margin-top: 20px
+}
+mat-card-actions a{
+  padding-left:3px;
+  font-style: italic;
+}
+.wrapper{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%)  translateY(-50%);
+}
+.loginButton{
+  left: 25px;
+  outline: none;
+}
+.outWrap{
+  background-image: linear-gradient(to right , #124485, rgb(25,137,70)) ;
+  background-size: cover;
+  height:100%;
+  width:100%;
+  position: fixed;
+}

@@ -3,6 +3,8 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    //"noImplicitAny": true, //newadd
+   // "suppressImplicitAnyIndexErrors": true, //newadd
     "sourceMap": true,
     "declaration": false,
     "module": "es2015",
@@ -17,6 +19,11 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+  /* "paths": {
+      "@/*": [
+          "app/*"
+      ]
+  }*/ 
   }
 }

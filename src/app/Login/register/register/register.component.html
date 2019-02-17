@@ -1,0 +1,39 @@
+<html>
+<body>
+
+  <div class='outWrap'>
+
+    <div class='wrapper'>
+        <app-alert></app-alert>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<mat-card>
+  <mat-card-title>注册</mat-card-title>
+        <mat-form-field>
+            <input matInput placeholder="公司名称" formControlName="firstName" required />
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="用户名" formControlName="lastName" required />
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="邮箱" formControlName="username" required />
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="密码" formControlName="password" required />
+        </mat-form-field>
+        <mat-card-actions>
+
+    <div>  <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+       <p>已有账户？<a routerLink="/login">去登陆</a></p>
+    </div>
+    <button mat-raised-button='' type='submit' [disabled]="loading" color="primary" class='loginButton'>注册</button>
+
+    </mat-card-actions>
+  </mat-card>
+</form>
+</div>
+</div>
+</body>
+</html>

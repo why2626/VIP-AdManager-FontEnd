@@ -8,23 +8,38 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { NewadsModule } from './NewAds/newads.module';
 import { AdTargetModule } from './AdTargetPeople/ad-target.module';
+import { LoginModule } from './Login/login.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor';
+import { fakeBackendProvider } from './helpers/fake-backend';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
-  
+
   imports: [
     BrowserModule,
     SharedModule,
     CoreModule,
     NewadsModule,
+    HomeModule,
     AdTargetModule,
     CdkStepperModule,
+    LoginModule,
+    HttpClientModule,
     AppRoutingModule,
+
   ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
-
+    // provider used to create fake backend
+   // fakeBackendProvider      //to switch to a real backend simply remove the providers located below the comment
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

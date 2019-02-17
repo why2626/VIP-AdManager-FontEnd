@@ -2,6 +2,7 @@
 <html>
   <div class='site'>
 
+    <div *ngIf="currentUser">
   <mat-sidenav-container>
     <mat-sidenav-content style='background: rgb(44,56,71)'>
       <app-sidenav></app-sidenav>
@@ -9,15 +10,17 @@
   </mat-sidenav-container>
   <mat-divider [vertical]="true"></mat-divider>
 
-
+</div>
 
     <main>
-      <header>
+      <header *ngIf="currentUser">
       <app-header></app-header>
       <mat-divider></mat-divider>
 
     </header>
+
     <div style='overflow: scroll'>
+
       <router-outlet></router-outlet>
     </div>
     </main>

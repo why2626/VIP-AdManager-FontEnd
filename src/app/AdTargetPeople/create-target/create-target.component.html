@@ -6,38 +6,62 @@
 (genderChange)="genderSelectChange($event)"></app-gender-age-info>
 
 <div class='selectedCard'>
-  <div style='position: fixed;width:360px'>
-  <mat-card>
+  <div style='position: fixed;width:330px'>
+  <mat-card style='background-color: white !important;z-index: 999;'>
     <mat-card-header>
       <mat-card-title>已选</mat-card-title>
     </mat-card-header>
     <mat-card-content>
+      <p>APP平台：{{selectedPlatform}}</p>
+      <p>{{genderSelectedItems}}</p>
+      <p>{{ageSelectedItems}}</p>
 
-      <p>
-        APP平台：{{selectedPlatform}}
-      </p>
-      <p>
-        {{genderSelectedItems}}
-      </p>
-      <p>
-        {{ageSelectedItems}}
-      </p>
-      <p>
-        {{selectedItems}}
-      </p>
+      <p>{{userBtn_1}}</p>
+      <p>{{userBtn_2}}</p>
+      <p>{{userBtn_3}}</p>
+      <p>{{userBtn_4}}</p>
+      <p>{{userBtn_5}}</p>
+
+      <p>{{categBtn_1}}</p>
+      <p>{{categBtn_2}}</p>
+      <p>{{categBtn_3}}</p>
+      <p>{{categBtn_4}}</p>
+      <p>{{categBtn_5}}</p>
+
+      <p>{{branBtn_1}}</p>
+      <p>{{branBtn_2}}</p>
+      <p>{{branBtn_3}}</p>
+      <p>{{branBtn_4}}</p>
+      <p>{{branBtn_5}}</p>
     </mat-card-content>
   </mat-card>
 </div>
 </div>
 
-
-
   <div>
   <h4 style='color:black'>行为轨迹</h4>
   <mat-tab-group animationDuration="0ms">
-      <mat-tab label="用户行为"> <app-user-behavior (change)="selectChange($event)"></app-user-behavior></mat-tab>
-      <mat-tab label="品类行为"> <app-category-behavior></app-category-behavior> </mat-tab>
-      <mat-tab label="品牌行为"> <app-brand-behavior></app-brand-behavior> </mat-tab>
+      <mat-tab label="用户行为"> <app-user-behavior
+                               (userBtn_1)="valUserBtn_1($event)"
+                               (userBtn_2)="valUserBtn_2($event)"
+                               (userBtn_3)="valUserBtn_3($event)"
+                               (userBtn_4)="valUserBtn_4($event)"
+                               (userBtn_5)="valUserBtn_5($event)">
+                              </app-user-behavior></mat-tab>
+      <mat-tab label="品类行为"> <app-category-behavior
+                               (category_button_1)="showCategoryBtn_1($event)"
+                               (category_button_2)="showCategoryBtn_2($event)"
+                               (category_button_3)="showCategoryBtn_3($event)"
+                               (category_button_4)="showCategoryBtn_4($event)"
+                               (category_button_5)="showCategoryBtn_5($event)">
+                              </app-category-behavior> </mat-tab>
+      <mat-tab label="品牌行为"> <app-brand-behavior
+                               (brand_button_1)='showBrandBtn_1($event)'
+                               (brand_button_2)='showBrandBtn_2($event)'
+                               (brand_button_3)='showBrandBtn_3($event)'
+                               (brand_button_4)='showBrandBtn_4($event)'
+                               (brand_button_5)='showBrandBtn_5($event)'>
+                              </app-brand-behavior> </mat-tab>
     </mat-tab-group>
   </div>
   <div style='display: flex;flex-direction: column'>

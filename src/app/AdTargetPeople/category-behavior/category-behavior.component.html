@@ -5,13 +5,12 @@
        </p>
   </div>
 <div class='selectArea'>
-    <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-    </mat-form-field>
+
 
 <div>
   <div *ngFor = 'let item of checkListObject | keyvalue:keepOriginalOrder; let i = index'>
     <mat-accordion >
+      <!-----同一时间最多只能展开一个----->
       <mat-expansion-panel style='width:315px'
       [expanded]="step === i"
       (opened)="setStep(i)"
@@ -46,11 +45,19 @@
 </div>
 
 <div class='showSelectedArea'>
-  <p>已选</p>
-    <code>{{selectedItems}}</code>
+  <div style='margin:20px;color:black'>
+    <p>已选</p>
+    <p style='font-size:14px;padding-left: 8px;'>{{selectedItems}}</p>
+  </div>
 </div>
 </div>
 
 <div>
-  <app-user-behavior [bahaviorTitle]='categoryBehavior'></app-user-behavior>
+  <app-user-behavior
+     [bahaviorTitle]='categoryBehavior'
+     (userBtn_1)="valButton_1($event)"
+     (userBtn_2)="valButton_2($event)"
+     (userBtn_3)="valButton_3($event)"
+     (userBtn_4)="valButton_4($event)"
+     (userBtn_5)="valButton_5($event)"></app-user-behavior>
 </div>

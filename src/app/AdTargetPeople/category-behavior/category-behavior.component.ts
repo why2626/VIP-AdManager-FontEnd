@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { KeyValue } from '@angular/common';
 
 @Component({
@@ -14,9 +14,9 @@ export class CategoryBehaviorComponent implements OnInit {
   panelOpenState = false
   masterSelected =[];
   public keepOriginalOrder = (a, b) => a.key
-  checkedList =[];
+  checkedList: any;
   allCheckedList = [];
-  selectedItems :string;
+  selectedItems :any;
 
   checkListObject: {[key: string]: any} = {
     '鞋': [
@@ -101,13 +101,21 @@ export class CategoryBehaviorComponent implements OnInit {
     ],
   }
 
-  constructor() {
-    //this.getCheckedItemList();
-    //this.checkedList = [];
-   }
+  @Output() category_button_1: EventEmitter<string> = new EventEmitter<string>()
+  @Output() category_button_2: EventEmitter<string> = new EventEmitter<string>()
+  @Output() category_button_3: EventEmitter<string> = new EventEmitter<string>()
+  @Output() category_button_4: EventEmitter<string> = new EventEmitter<string>()
+  @Output() category_button_5: EventEmitter<string> = new EventEmitter<string>()
 
-  ngOnInit() {
-  }
+  btn_1_val : string;
+  btn_2_val : string;
+  btn_3_val : string;
+  btn_4_val : string;
+  btn_5_val : string;
+
+  constructor() {}
+
+  ngOnInit() {}
 
   checkUncheckAll(checklist: KeyValue<string, any>, j:number) {
     var list = checklist.value;  //当前masterselect下的几条对象
@@ -127,28 +135,41 @@ export class CategoryBehaviorComponent implements OnInit {
 
   getCheckedItemList(checklist: KeyValue<string, any>){
     var list = checklist.value;
+    var key = checklist.key;
     this.checkedList = [];
     for (var i = 0; i < list.length; i++) {
-        //!(list[i].name in this.checkedList)
         if (list[i].isSelected)
-        this.checkedList.push(list[i].name);
+        this.checkedList.push(list[i]['name']);
     }
-
-    //this.allCheckedList.push(this.checkedList)
-
-    this.selectedItems = JSON.stringify(this.checkedList);
+    for( let j = 0; j< key.length; j++){
+    this.selectedItems = this.checkedList[j];}
   }
-
+//-------同一时间最多只能展开一个-------
   step :number;
 
   setStep(index: number) {
     this.step = index;
   }
-  applyFilter(filterValue: string) {
-    this.checkListObject.value.filter = filterValue.trim().toLowerCase();
+//-------此类每一个选择的value---------
+
+  valButton_1(event: string){
+    this.btn_1_val = `${event}`;
+    this.category_button_1.emit(this.btn_1_val)
+  }
+  valButton_2(event: string){
+    this.btn_2_val = `${event}`;
+    this.category_button_2.emit(this.btn_2_val)
+  }
+  valButton_3(event: string){
+    this.btn_3_val = `${event}`;
+    this.category_button_3.emit(this.btn_3_val)
+  }
+  valButton_4(event: string){
+    this.btn_4_val = `${event}`;
+    this.category_button_4.emit(this.btn_4_val)
+  }
+  valButton_5(event: string){
+    this.btn_5_val = `${event}`;
+    this.category_button_5.emit(this.btn_5_val)
   }
 }
-/*this.checkedList.forEach(function(value){
-  if (list[i].name.indexOf(value)==-1 && list[i].isSelected)
-  this.checkedList.push(list[i].name);
-})*/

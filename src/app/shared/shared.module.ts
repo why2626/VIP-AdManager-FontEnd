@@ -27,6 +27,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [],
@@ -59,7 +60,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     CdkTableModule,
     MatTabsModule,
     MatButtonToggleModule,
-    MatExpansionModule
+    MatExpansionModule,
+    NgMultiSelectDropDownModule,
+
 
 
 
@@ -95,7 +98,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     CdkTableModule,
     MatTabsModule,
     MatButtonToggleModule,
-    MatExpansionModule
+    MatExpansionModule,
+    NgMultiSelectDropDownModule,
 
 
   ],
