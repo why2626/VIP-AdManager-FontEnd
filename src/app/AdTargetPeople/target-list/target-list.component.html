@@ -1,0 +1,29 @@
+<div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade"
+         *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/target-add']"><mat-icon>add</mat-icon></a>
+    </div>
+    <div class="mat-elevation-z8">
+      <mat-table [dataSource]="data" class="example-table"
+             matSort matSortActive="TargetNname" matSortDisableClear matSortDirection="asc">
+
+        <!-- Product Name Column -->
+        <ng-container matColumnDef="targetName">
+          <mat-header-cell *matHeaderCellDef>target Name</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.targetName}}</mat-cell>
+        </ng-container>
+
+        <!-- Product Price Column -->
+        <ng-container matColumnDef="platform">
+          <mat-header-cell *matHeaderCellDef>Platform</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.platform}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/target-details/', row._id]"></mat-row>
+      </mat-table>
+    </div>
+  </div>

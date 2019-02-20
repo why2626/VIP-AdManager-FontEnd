@@ -14,10 +14,16 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { HomeModule } from './home/home.module';
+import { TargetDetailsComponent } from './AdTargetPeople/target-details/target-details.component';
+import { AddTargetComponent } from './AdTargetPeople/add-target/add-target.component';
+import { EditTargetComponent } from './AdTargetPeople/edit-target/edit-target.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    TargetDetailsComponent,
+    AddTargetComponent,
+    EditTargetComponent,
   ],
 
   imports: [

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { TargetService } from 'src/app/service/target.service';
 
 @Component({
   selector: 'app-create-target',
@@ -118,5 +119,9 @@ showCategoryBtn_4(event: string){
 }
 showCategoryBtn_5(event: string){
   this.categBtn_5 = `${event}`
+}
+
+constructor(private targetService: TargetService){
+  
 }
 }

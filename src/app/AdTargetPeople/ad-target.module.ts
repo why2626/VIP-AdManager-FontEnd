@@ -6,6 +6,7 @@ import { UserBehaviorComponent } from './user-behavior/user-behavior.component';
 import { CategoryBehaviorComponent } from './category-behavior/category-behavior.component';
 import { BrandBehaviorComponent } from './brand-behavior/brand-behavior.component';
 import { GenderAgeInfoComponent } from './gender-age-info/gender-age-info.component';
+import { TargetListComponent } from './target-list/target-list.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { GenderAgeInfoComponent } from './gender-age-info/gender-age-info.compon
     UserBehaviorComponent,
     CategoryBehaviorComponent,
     BrandBehaviorComponent,
-    GenderAgeInfoComponent
+    GenderAgeInfoComponent,
+    TargetListComponent
   ],
   imports: [
     SharedModule,
