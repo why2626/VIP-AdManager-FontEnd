@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'newtarget', component: CreateTargetComponent },
   { path: 'targets', component: TargetListComponent},
   { path: 'target-details/:id', component: TargetDetailsComponent},
-  { path: 'target-add', component: AddTargetComponent },
+  { path: 'target-add', component: CreateTargetComponent },
   { path: 'target-edit/:id', component: EditTargetComponent }
 ];
 

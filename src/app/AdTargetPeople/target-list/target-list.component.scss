@@ -1,7 +1,10 @@
 /* Structure */
 .example-container {
   position: relative;
-  padding: 5px;
+  margin: 20px;
+  background: none;
+  height:100%;
+  width:100%;
 }
 
 .example-table-container {
@@ -10,21 +13,22 @@
   overflow: auto;
 }
 
-table {
+mat-table {
   width: 100%;
 }
 
 .example-loading-shade {
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 56px;
-  right: 0;
-  background: rgba(0, 0, 0, 0.15);
-  z-index: 1;
+  z-index: 999;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-self: center;
+  margin-left:100px;
+  margin-top:15px;
+}
+
+mat-spinner{
+  width:20px;
+  height:20px;
 }
 
 .example-rate-limit-reached {
@@ -45,4 +49,13 @@ table {
 
 .mat-flat-button {
   margin: 5px;
+  font-weight: 300;
+}
+.listContent{
+  margin-top:10px;
+}
+.mat-column-operation{
+  flex: 0 0 80px;
+  display: flex;
+  justify-content: center;
 }

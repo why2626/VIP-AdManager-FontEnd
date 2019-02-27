@@ -1,28 +1,54 @@
-<div class="example-container mat-elevation-z8">
+<div class="example-container">
     <div class="example-loading-shade"
          *ngIf="isLoadingResults">
-      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      <mat-spinner *ngIf="isLoadingResults" [diameter]="20"></mat-spinner>
     </div>
     <div class="button-row">
-      <a mat-flat-button color="primary" [routerLink]="['/targets']"><mat-icon>list</mat-icon></a>
+      <a mat-raised-button color="primary" [routerLink]="['/targets']">返回</a>
     </div>
+    <div class='selected-card'>
     <mat-card class="example-card">
       <mat-card-header>
-        <mat-card-title><h2>{{target.targetName}}</h2></mat-card-title>
-        <mat-card-subtitle>{{target.platform}}</mat-card-subtitle>
+        <mat-card-title><h4>{{target.targetName}}</h4></mat-card-title>
+        <mat-card-subtitle>已选标签:</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
- <!--       <dl>
-          <dt>Product Price:</dt>
-          <dd>{{product.prod_price}}</dd>
-          <dt>Updated At:</dt>
-          <dd>{{product.updated_at | date}}</dd>
-        </dl>-->
+      <div class='cardContent'>
+          <p>平台: {{target.platform}}</p>
+
+          <p>{{target.gender}}</p>
+
+          <p>{{target.age}}</p>
+          <p>{{target.userBtn_1}}</p>
+          <p>{{target.userBtn_2}}</p>
+          <p>{{target.userBtn_3}}</p>
+          <p>{{target.userBtn_4}}</p>
+          <p>{{target.userBtn_5}}</p>
+
+          <p>{{target.categBtn_1}}</p>
+          <p>{{target.categBtn_2}}</p>
+          <p>{{target.categBtn_3}}</p>
+          <p>{{target.categBtn_4}}</p>
+          <p>{{target.categBtn_5}}</p>
+
+          <p>{{target.branBtn_1}}</p>
+          <p>{{target.branBtn_2}}</p>
+          <p>{{target.branBtn_3}}</p>
+          <p>{{target.branBtn_4}}</p>
+          <p>{{target.branBtn_5}}</p>
+
+          <p>创建时间: {{target.createTime | date:'yyyy-MM-dd'}}</p>
+
+      </div>
       </mat-card-content>
       <mat-card-actions>
-        <a mat-flat-button color="primary" [routerLink]="['/target-edit', target._id]"><mat-icon>edit</mat-icon></a>
-        <a mat-flat-button color="warn" (click)="deleteTarget(target._id)"><mat-icon>delete</mat-icon></a>
+        <div class='actionButtons'>
+        <a mat-stroked-button color="primary" [routerLink]="['/target-edit/', target._id]">编辑</a>
+        <a mat-stroked-button (click)="deleteTarget(target._id)">删除</a>
+      </div>
       </mat-card-actions>
     </mat-card>
   </div>
+  </div>
+
 

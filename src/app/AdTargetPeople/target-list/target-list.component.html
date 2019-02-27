@@ -1,29 +1,48 @@
-<div class="example-container mat-elevation-z8">
+<div class="example-container">
     <div class="example-loading-shade"
          *ngIf="isLoadingResults">
-      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      <mat-spinner *ngIf="isLoadingResults" [diameter]="20"></mat-spinner>
     </div>
     <div class="button-row">
-      <a mat-flat-button color="primary" [routerLink]="['/target-add']"><mat-icon>add</mat-icon></a>
+      <a mat-flat-button color="primary" [routerLink]="['/target-add']">新建</a>
     </div>
-    <div class="mat-elevation-z8">
+    <div class="mat-elevation-z8 listContent">
       <mat-table [dataSource]="data" class="example-table"
              matSort matSortActive="TargetNname" matSortDisableClear matSortDirection="asc">
 
-        <!-- Product Name Column -->
+        <!-- 人群名称 Column -->
         <ng-container matColumnDef="targetName">
-          <mat-header-cell *matHeaderCellDef>target Name</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef>人群名称</mat-header-cell>
           <mat-cell *matCellDef="let row">{{row.targetName}}</mat-cell>
         </ng-container>
 
-        <!-- Product Price Column -->
+        <!-- 投放平台 Column -->
         <ng-container matColumnDef="platform">
-          <mat-header-cell *matHeaderCellDef>Platform</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef>投放平台</mat-header-cell>
           <mat-cell *matCellDef="let row">{{row.platform}}</mat-cell>
         </ng-container>
 
+        <!-- 覆盖人群数 Column -->
+        <ng-container matColumnDef="peopleEstimate">
+          <mat-header-cell *matHeaderCellDef>覆盖人群数</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.peopleEstimate}}</mat-cell>
+        </ng-container>
+
+        <!-- 创建时间 Column -->
+        <ng-container matColumnDef="createTime">
+          <mat-header-cell *matHeaderCellDef>创建时间</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.createTime | date:'yyyy-MM-dd'}}</mat-cell>
+        </ng-container>
+
+        <!-- 操作 Column -->
+        <ng-container matColumnDef="operation">
+            <mat-header-cell *matHeaderCellDef>操作</mat-header-cell>
+            <mat-cell *matCellDef="let row"><button mat-button (click)="deleteTarget(row._id)" style='padding:0'><mat-icon>delete</mat-icon></button></mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/target-details/', row._id]"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/target-details/', row._id]" style='cursor: pointer;'></mat-row>
       </mat-table>
     </div>
   </div>
+<!-- (click)="$event.stopPropagation()" [routerLink]="['/targets']"-->

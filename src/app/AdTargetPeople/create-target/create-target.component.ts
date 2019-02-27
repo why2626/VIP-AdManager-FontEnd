@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder, NgForm } from '@angular/forms';
 import { TargetService } from 'src/app/service/target.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-target',
@@ -9,12 +10,12 @@ import { TargetService } from 'src/app/service/target.service';
 })
 export class CreateTargetComponent implements OnInit {
 
+  targetForm: FormGroup;
 
-  selectedPlatform = 'iOS';
-  buttons = []
+  selectedPlatform: string = 'iOS';
 
-  ageSelectedItems: any;
-  genderSelectedItems: any;
+  ageSelectedItems: string;
+  genderSelectedItems: string;
 
   userBtn_1: any;
   userBtn_2: any;
@@ -34,94 +35,124 @@ export class CreateTargetComponent implements OnInit {
   categBtn_4:any;
   categBtn_5:any;
 
+  targetName = new FormControl('',[Validators.required]);
 
-  targetName = new FormControl('',[Validators.required])
-/*
-  subscription: Subscription;
-  constructor(private targetService:TargetPeopleService) {
-     //使用subscribe来订阅，当数据被发射出来的时候,这里就会接收到结果
-    this.subscription = this.targetService.buttonObservable
-        .subscribe( src => {console.log(src)})
-   }
-*/
-   //销毁的时候需要取消订阅，因为订阅之后会一直处于观察者状态,不取消会导致泄露
-   ngOnDestroy() {
-  //  this.subscription.unsubscribe();
-}
+  constructor(
+    private targetService: TargetService,
+    private router: Router,
+    private formBuilder: FormBuilder){}
 
   ngOnInit() {
-    //this.singleSeletedBtn_1()
+    this.target_form();
   }
-  singleSelectButton(j: number){
-    this.buttons[j].selected = !this.buttons[j].selected;
-    for(let i = 0; i < this.buttons.length; i++){
-     if(i != j){
-       this.buttons[i].selected = false;
-     }
-    }
+
+ target_form(): void{
+    this.targetForm = this.formBuilder.group({
+      targetName : [null, Validators.required],
+      platform : [null, Validators.required],
+      createTime : [(new Date()).toLocaleDateString, Validators.required],
+      gender: [null],
+      age: [null],
+      userBtn_1: [null],
+      userBtn_2: [null],
+      userBtn_3: [null],
+      userBtn_4: [null],
+      userBtn_5: [null],
+      branBtn_1: [null],
+      branBtn_2: [null],
+      branBtn_3: [null],
+      branBtn_4: [null],
+      branBtn_5: [null],
+      categBtn_1: [null],
+      categBtn_2: [null],
+      categBtn_3: [null],
+      categBtn_4: [null],
+      categBtn_5: [null],
+    });
   }
+
   getErrorMessage() {
     return this.targetName.hasError('required') ? '人群名称不能为空' : '';
   }
     ageSelectChange(event: string){
       this.ageSelectedItems = `${event}`;
+      this.targetForm.controls['age'].patchValue(this.ageSelectedItems);
     }
     genderSelectChange(event: string){
       this.genderSelectedItems = `${event}`;
+      this.targetForm.controls['gender'].patchValue(this.genderSelectedItems);
     }
-   /* singleSeletedBtn_1(){
-      this.selectedItems=this.targetService.sendSingleBtn_1()
-    }*/
 //-----展示用户行为------
     valUserBtn_1(event: string){
       this.userBtn_1 = `${event}`;
+      this.targetForm.controls['_userBtn_1'].patchValue(this.userBtn_1);
+      console.log(this.userBtn_1)
    }
    valUserBtn_2(event: string){
-    this.userBtn_2 = `${event}`;
- }
- valUserBtn_3(event: string){
-  this.userBtn_3 = `${event}`;
-}
-valUserBtn_4(event: string){
-  this.userBtn_4 = `${event}`;
-}
-valUserBtn_5(event: string){
-  this.userBtn_5 = `${event}`;
-}
-//-----展示品牌行为------
-showBrandBtn_1(event: string){
-  this.branBtn_1 = `${event}`
-}
-showBrandBtn_2(event: string){
-  this.branBtn_2 = `${event}`
-}
-showBrandBtn_3(event: string){
-  this.branBtn_3 = `${event}`
-}
-showBrandBtn_4(event: string){
-  this.branBtn_4 = `${event}`
-}
-showBrandBtn_5(event: string){
-  this.branBtn_5 = `${event}`
-}
-//-----展示类品行为------
-showCategoryBtn_1(event: string){
-  this.categBtn_1 = `${event}`
-}
-showCategoryBtn_2(event: string){
-  this.categBtn_2 = `${event}`
-}
-showCategoryBtn_3(event: string){
-  this.categBtn_3 = `${event}`
-}
-showCategoryBtn_4(event: string){
-  this.categBtn_4 = `${event}`
-}
-showCategoryBtn_5(event: string){
-  this.categBtn_5 = `${event}`
-}
+      this.userBtn_2 = `${event}`;
+      this.targetForm.controls['userBtn_2'].patchValue(this.userBtn_2);
+   }
+   valUserBtn_3(event: string){
+      this.userBtn_3 = `${event}`;
+      this.targetForm.controls['userBtn_3'].patchValue(this.userBtn_3);
+   }
+   valUserBtn_4(event: string){
+      this.userBtn_4 = `${event}`;
+      this.targetForm.controls['userBtn_4'].patchValue(this.userBtn_4);
+   }
+   valUserBtn_5(event: string){
+      this.userBtn_5 = `${event}`;
+      this.targetForm.controls['userBtn_5'].patchValue(this.userBtn_5);
 
-constructor(private targetService: TargetService){
-  
-}
+   }
+//-----展示品牌行为------
+    showBrandBtn_1(event: string){
+      this.branBtn_1 = `${event}`;
+      this.targetForm.controls['branBtn_1'].patchValue(this.branBtn_1);
+   }
+    showBrandBtn_2(event: string){
+      this.branBtn_2 = `${event}`;
+      this.targetForm.controls['branBtn_2'].patchValue(this.branBtn_2);
+   }
+    showBrandBtn_3(event: string){
+      this.branBtn_3 = `${event}`;
+      this.targetForm.controls['branBtn_3'].patchValue(this.branBtn_3);
+   }
+    showBrandBtn_4(event: string){
+      this.branBtn_4 = `${event}`;
+      this.targetForm.controls['branBtn_4'].patchValue(this.branBtn_4);
+   }
+    showBrandBtn_5(event: string){
+      this.branBtn_5 = `${event}`;
+      this.targetForm.controls['branBtn_5'].patchValue(this.branBtn_5);
+   }
+//-----展示类品行为------
+    showCategoryBtn_1(event: string){
+      this.categBtn_1 = `${event}`;
+      this.targetForm.controls['categBtn_1'].patchValue(this.categBtn_1);
+   }
+    showCategoryBtn_2(event: string){
+      this.categBtn_2 = `${event}`;
+      this.targetForm.controls['categBtn_2'].patchValue(this.categBtn_2);
+   }
+    showCategoryBtn_3(event: string){
+      this.categBtn_3 = `${event}`;
+      this.targetForm.controls['categBtn_3'].patchValue(this.categBtn_3);
+   }
+    showCategoryBtn_4(event: string){
+      this.categBtn_4 = `${event}`;
+      this.targetForm.controls['categBtn_4'].patchValue(this.categBtn_4);
+   }
+    showCategoryBtn_5(event: string){
+      this.categBtn_5 = `${event}`;
+      this.targetForm.controls['categBtn_5'].patchValue(this.categBtn_5);
+   }
+    onFormSubmit(form:NgForm) {
+      this.targetService.addTarget(form)
+          .subscribe(res => {
+         this.router.navigate(['/targets']);
+          }, (err) => {
+          console.log(err);
+         });
+      }
 }

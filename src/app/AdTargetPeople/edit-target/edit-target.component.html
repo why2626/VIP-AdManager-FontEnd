@@ -1,31 +1,37 @@
-<div class="example-container mat-elevation-z8">
+<div class= 'wrapper'>
+<div class="example-container">
     <div class="example-loading-shade"
          *ngIf="isLoadingResults">
-      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      <mat-spinner *ngIf="isLoadingResults" [diameter]="20"></mat-spinner>
     </div>
-    <div class="button-row">
-      <a mat-flat-button color="primary" (click)="targetDetails()"><mat-icon>info</mat-icon></a>
+    <div class="returnButton">
+      <a mat-raised-button color="primary" [routerLink]="['/targets']">人群列表</a>
     </div>
     <mat-card class="example-card">
       <form [formGroup]="targetForm" (ngSubmit)="onFormSubmit(targetForm.value)">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Product Name" formControlName="targetName"
+          <input matInput placeholder="人群名称" formControlName="targetName"
                  [errorStateMatcher]="matcher">
           <mat-error>
             <span *ngIf="!targetForm.get('targetName').valid && targetForm.get('targetName').touched">Please enter Product Name</span>
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+    <!--    <mat-form-field class="example-full-width">
           <input matInput placeholder="Product Desc" formControlName="platform"
                  [errorStateMatcher]="matcher">
           <mat-error>
             <span *ngIf="!targetForm.get('platform').valid && targetForm.get('platform').touched">Please enter Product Description</span>
           </mat-error>
         </mat-form-field>
-
+-->
         <div class="button-row">
-          <button type="submit" [disabled]="!targetForm.valid" mat-flat-button color="primary"><mat-icon>save</mat-icon></button>
+          <button type="submit" [disabled]="!targetForm.valid" mat-stroked-button color="primary">修改</button>
+          <a mat-stroked-button (click)="targetDetails()">返回</a>
         </div>
       </form>
     </mat-card>
   </div>
+ <!--<div class='detailsCard'>
+    <app-target-details></app-target-details>
+  </div>-->
+</div>

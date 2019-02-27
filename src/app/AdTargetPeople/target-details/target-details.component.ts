@@ -10,7 +10,29 @@ import { Target } from 'src/app/models';
 })
 export class TargetDetailsComponent implements OnInit {
 
-  target: Target;
+  target: Target ={
+    _id: '',
+    targetName: '',
+    platform: '',
+    createTime: null,
+    gender: '',
+    age: '',
+    userBtn_1: '',
+    userBtn_2: '',
+    userBtn_3: '',
+    userBtn_4: '',
+    userBtn_5: '',
+    branBtn_1: '',
+    branBtn_2: '',
+    branBtn_3: '',
+    branBtn_4: '',
+    branBtn_5: '',
+    categBtn_1: '',
+    categBtn_2: '',
+    categBtn_3: '',
+    categBtn_4: '',
+    categBtn_5: '',
+  };
   isLoadingResults = true;
 
 

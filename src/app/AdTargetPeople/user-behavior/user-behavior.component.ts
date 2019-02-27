@@ -1,7 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { TargetPeopleService } from 'src/app/service/target-people.service';
-import { TrustedScriptString } from '@angular/core/src/sanitization/bypass';
-
 
 @Component({
   selector: 'app-user-behavior',
@@ -26,22 +23,7 @@ export class UserBehaviorComponent implements OnInit {
   selectedButton_4: string;
   selectedButton_5: string;
 
-  constructor(private targetService: TargetPeopleService) {
-    //this.targetService.emitButton_1(this.selectedButton_1)
-   }
-/*
-  getUserBehavBtn(){
-  //  this.targetService.getUserBehavBtn_1()
-  //      .subscribe(buttons_1 => this.buttons_1 = buttons_1);
-  //  this.targetService.getUserBehavBtn_2()
-  //      .subscribe(buttons_2 => this.buttons_2 = buttons_2);
-    this.targetService.getUserBehavBtn_3()
-        .subscribe(buttons_3 => this.buttons_3 = buttons_3);
-    this.targetService.getUserBehavBtn_4()
-        .subscribe(buttons_4 => this.buttons_4 = buttons_4);
-    this.targetService.getUserBehavBtn_5()
-        .subscribe(buttons_5 => this.buttons_5 = buttons_5);
-  }*/
+  constructor() {}
 
   buttons_1 = [
     {name:'最近3天', selected: false},
@@ -84,13 +66,7 @@ export class UserBehaviorComponent implements OnInit {
     {name:'最近一年', selected: false},
   ]
 
-
-  /*singleSelectButton_1(j:number){
-    this.targetService.singleSelectButton_1(j)
-  }*/
-  ngOnInit() {
-    //this.getUserBehavBtn()
-  }
+  ngOnInit() {}
 
   singleSelectButton_1(j: number){
     this.buttons_1[j].selected = !this.buttons_1[j].selected;
@@ -152,7 +128,5 @@ export class UserBehaviorComponent implements OnInit {
                {this.selectedButton_5=''}
                this.userBtn_5.emit(this.selectedButton_5);
             }
-
-
   }
 

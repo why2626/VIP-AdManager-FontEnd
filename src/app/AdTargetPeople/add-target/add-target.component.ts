@@ -22,7 +22,7 @@ export class AddTargetComponent implements OnInit {
     this.targetForm = this.formBuilder.group({
       'targetName' : [null, Validators.required],
       'platform' : [null, Validators.required],
-
+//useless
       //'updated_at' : [null, Validators.required]
     });
   }

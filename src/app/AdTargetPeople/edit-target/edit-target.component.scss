@@ -1,7 +1,7 @@
 /* Structure */
 .example-container {
   position: relative;
-  padding: 5px;
+  margin: 50px;
 }
 
 .example-form {
@@ -12,6 +12,8 @@
 
 .example-full-width {
   width: 100%;
+  margin-top:50px;
+  margin-bottom: 20px;
 }
 
 .example-full-width:nth-last-child() {
@@ -19,9 +21,34 @@
 }
 
 .button-row {
-  margin: 10px 0;
+  display: flex;
+  justify-content: flex-end
 }
 
-.mat-flat-button {
+.example-card{
+  width:400px;
+  margin-top:20px;
+}
+.mat-raised-button,
+.mat-stroked-button,
+.mat-flat-button  {
   margin: 5px;
+  font-weight: 300;
+}
+.wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+.detailsCard{
+  display: flex;
+  justify-content: flex-end;
+}
+.example-loading-shade {
+  position: absolute;
+  z-index: 999;
+  display: flex;
+  justify-self: center;
+  margin-left:100px;
+  margin-top:15px;
 }

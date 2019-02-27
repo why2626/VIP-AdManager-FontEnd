@@ -3,11 +3,12 @@ import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Target } from '../models/target'
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = "http://localhost:1234/targets";
+const apiUrl = environment.targetApiUrl;
 @Injectable({
   providedIn: 'root'
 })
@@ -29,7 +30,7 @@ export class TargetService {
   getTargets (): Observable<Target[]> {
     return this.http.get<Target[]>(apiUrl)
       .pipe(
-        tap(heroes => console.log('fetched Targets')),
+        tap(_ => console.log('fetched Targets')),
         catchError(this.handleError('getTargets', []))
       );
   }
