@@ -85,7 +85,7 @@ export class CreateTargetComponent implements OnInit {
 //-----展示用户行为------
     valUserBtn_1(event: string){
       this.userBtn_1 = `${event}`;
-      this.targetForm.controls['_userBtn_1'].patchValue(this.userBtn_1);
+      this.targetForm.controls['userBtn_1'].patchValue(this.userBtn_1);
       console.log(this.userBtn_1)
    }
    valUserBtn_2(event: string){

@@ -1,0 +1,47 @@
+<div class="example-container">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults" [diameter]="20"></mat-spinner>
+  </div>
+  <div class="mat-elevation-z8 listContent">
+ <!--     <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field> -->
+    <mat-table [dataSource]="data" class="example-table"
+           matSort matSortActive="TargetNname" matSortDisableClear matSortDirection="asc" >
+
+    <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+      </mat-checkbox>
+      </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)">
+      </mat-checkbox>
+    </mat-cell>
+  </ng-container>
+
+      <!-- 人群名称 Column -->
+      <ng-container matColumnDef="targetName">
+        <mat-header-cell *matHeaderCellDef>人群名称</mat-header-cell>
+        <mat-cell *matCellDef="let row" >{{row.targetName}}</mat-cell>
+      </ng-container>
+
+      <!-- 覆盖人群数 Column -->
+      <ng-container matColumnDef="peopleEstimate">
+        <mat-header-cell *matHeaderCellDef>覆盖人群数</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.peopleEstimate}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)" style='cursor: pointer;'></mat-row>
+    </mat-table>
+  </div>
+</div>
+<!-- (click)="$event.stopPropagation()" [routerLink]="['/targets']"-->
+<!--[routerLink]="['/target-details/', row._id]"-->

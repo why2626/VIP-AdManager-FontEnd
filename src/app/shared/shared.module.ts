@@ -29,9 +29,10 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { FilterPipeComponent } from './filter-pipe/filter-pipe.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [FilterPipeComponent],
   imports: [
     CommonModule,
     BrowserAnimationsModule,

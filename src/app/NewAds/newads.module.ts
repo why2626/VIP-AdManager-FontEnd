@@ -7,12 +7,14 @@ import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-mome
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import { Step2Component } from './step2/step2.component';
 import { AdPositionListComponent } from './ad-position-list/ad-position-list.component';
+import { Step3Component } from './step3/step3.component';
 
 @NgModule({
   declarations: [
     CreateAdComponent,
     Step1Component,
     Step2Component,
+    Step3Component,
     AdPositionListComponent
 
   ],

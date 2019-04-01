@@ -3,8 +3,11 @@
   position: relative;
   margin: 20px;
   background: none;
-  height:100%;
-  width:100%;
+  height:380px;
+  width:300px;
+  overflow: scroll;
+  border:1px solid grey;
+  border-radius: 5px;
 }
 
 .example-table-container {
@@ -37,40 +40,18 @@ mat-spinner{
   text-align: center;
 }
 
-/* Column Widths */
-.mat-column-number,
-.mat-column-state {
-  max-width: 64px;
-}
-
-.mat-column-created {
-  max-width: 124px;
-}
-
 .mat-flat-button {
   margin: 5px;
   font-weight: 300;
 }
-.listContent{
-  margin-top:10px;
-}
-.mat-column-operation{
-  flex: 0 0 80px;
-  display: flex;
-  justify-content: center;
-}
-.mat-column-createTime{
+
+.mat-column-peopleEstimate{
   flex: 0 0 100px;
   display: flex;
   justify-content: center;
 }
-.mat-column-peopleEstimate{
-  flex: 0 0 130px;
-  display: flex;
-  justify-content: center;
-}
-.mat-column-platform{
-  flex: 0 0 80px;
+.mat-column-select{
+  flex: 0 0 50px;
   display: flex;
   justify-content: center;
 }
