@@ -32,6 +32,7 @@ export class TargetDetailsComponent implements OnInit {
     categBtn_3: '',
     categBtn_4: '',
     categBtn_5: '',
+    userId:'',
   };
   isLoadingResults = true;
 

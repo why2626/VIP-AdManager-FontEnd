@@ -84,10 +84,13 @@
     </div>
   </div>
 
+  <mat-form-field  class='adTargetInput alignside'>
+    <input matInput #input="" placeholder="手动输入用户id" formControlName="userId" required="" class='targetInput'>
+  </mat-form-field>
   <div style='margin-left:400px;margin-top:50px;'>
 
 
-    <button mat-raised-button color='primary' type='submit' (click)="onFormSubmit(targetForm.value)">创建人群</button>
+    <button mat-raised-button color='primary' type='submit' (click)="onFormSubmit(targetForm.value)" >创建人群</button>
     <button mat-raised-button style='margin-left: 20px'>返回</button>
   </div>
 </form>

@@ -23,5 +23,6 @@ export class Target{
    categBtn_3?: string;
    categBtn_4?: string;
    categBtn_5?: string;
+   userId: string;
 
 }

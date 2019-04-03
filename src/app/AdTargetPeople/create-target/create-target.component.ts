@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder, NgForm } from '@angular/forms';
 import { TargetService } from 'src/app/service/target.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/service';
+import { User } from 'src/app/models';
 
 @Component({
   selector: 'app-create-target',
@@ -35,12 +37,17 @@ export class CreateTargetComponent implements OnInit {
   categBtn_4:any;
   categBtn_5:any;
 
+  userId: any;
+
+  user: User
+
   targetName = new FormControl('',[Validators.required]);
 
   constructor(
     private targetService: TargetService,
     private router: Router,
-    private formBuilder: FormBuilder){}
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService){}
 
   ngOnInit() {
     this.target_form();
@@ -68,6 +75,7 @@ export class CreateTargetComponent implements OnInit {
       categBtn_3: [null],
       categBtn_4: [null],
       categBtn_5: [null],
+      userId: [null, Validators.required]
     });
   }
 
@@ -147,7 +155,19 @@ export class CreateTargetComponent implements OnInit {
       this.categBtn_5 = `${event}`;
       this.targetForm.controls['categBtn_5'].patchValue(this.categBtn_5);
    }
+   //----------获取用户id
+    getCurrentUserId (){
+      this.authenticationService.currentUser
+      .subscribe( user => this.user = user)
+      this.userId = this.user['_id']
+      this.targetForm.controls['userId'].patchValue(this.userId) // <---如果不是手动输入，patch应该不成功，手动输入能patch成功
+      console.log(this.userId)  //有结果，输出userId
+      console.log(this.targetForm.controls['useId']) //undefined
+      console.log(this.targetForm.controls['age']) //return formcontrol data
+    }
+
     onFormSubmit(form:NgForm) {
+      this.getCurrentUserId()
       this.targetService.addTarget(form)
           .subscribe(res => {
          this.router.navigate(['/targets']);
