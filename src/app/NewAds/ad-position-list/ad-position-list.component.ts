@@ -34,6 +34,10 @@ export class AdPositionListComponent implements OnInit {
 
   selectedAd:PeriodicElement;
 
+  //selectedFile: File
+
+  url :any
+
   constructor() { }
 
   ngOnInit() {
@@ -46,6 +50,18 @@ export class AdPositionListComponent implements OnInit {
   selectedAdPos(selected){
     console.log(selected)
   }
+  onFileChanged(event) {
+  if (event.target.files && event.target.files[0]) {
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]); // read file as data url
+    reader.onload = (event:Event) =>{ // called once readAsDataURL is completed
+     this.url = reader.result
+    }
+   }
+  }
+  cancelFileUpload(event){
+      this.url = ''
 
 
+  }
 }

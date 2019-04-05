@@ -1,15 +1,29 @@
-/* Structure */
-.example-container {
+.wrapper{
+  margin-left:30px;
+}
+.people-container {
   position: relative;
-  margin: 20px;
   background: none;
   height:380px;
   width:300px;
   overflow: scroll;
-  border:1px solid grey;
-  border-radius: 5px;
+  border:1px solid rgb(206, 204, 204);
+  border-radius: 7px;
 }
-
+.selectedPeopleContainer{
+  position: relative;
+  background: none;
+  height:380px;
+  width:300px;
+  overflow: scroll;
+  border:1px solid rgb(206, 204, 204);
+  border-radius: 7px;
+  margin-left: 30px
+}
+.people-select-wrap{
+  display: flex;
+  flex-direction: row
+}
 .example-table-container {
   position: relative;
   max-height: 400px;
@@ -54,4 +68,18 @@ mat-spinner{
   flex: 0 0 50px;
   display: flex;
   justify-content: center;
+}
+mat-divider{
+  width:635px;
+  margin-top:-10px;
+  color:rgb(66, 66, 66)
+}
+.detial-p{
+  margin-top:40px;
+}
+.detial-p p{
+  color:rgb(109, 108, 108);
+}
+.startInput{
+  color:black
 }

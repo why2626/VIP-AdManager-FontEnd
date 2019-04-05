@@ -155,24 +155,15 @@ export class CreateTargetComponent implements OnInit {
       this.categBtn_5 = `${event}`;
       this.targetForm.controls['categBtn_5'].patchValue(this.categBtn_5);
    }
-   //----------获取用户id
-    getCurrentUserId (){
-      this.authenticationService.currentUser
-      .subscribe( user => this.user = user)
-      this.userId = this.user['_id']
-      this.targetForm.controls['userId'].patchValue(this.userId) // <---如果不是手动输入，patch应该不成功，手动输入能patch成功
-      console.log(this.userId)  //有结果，输出userId
-      console.log(this.targetForm.controls['useId']) //undefined
-      console.log(this.targetForm.controls['age']) //return formcontrol data
-    }
+
 
     onFormSubmit(form:NgForm) {
-      this.getCurrentUserId()
       this.targetService.addTarget(form)
           .subscribe(res => {
          this.router.navigate(['/targets']);
           }, (err) => {
           console.log(err);
          });
+
       }
 }

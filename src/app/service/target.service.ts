@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { catchError, tap, map } from 'rxjs/operators';
 import { Target } from '../models/target'
 import { environment } from 'src/environments/environment';
+import { User } from '../models';
+import { AuthenticationService } from './authentication.service';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -14,7 +16,13 @@ const apiUrl = environment.targetApiUrl;
 })
 export class TargetService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private authenticationService: AuthenticationService
+    ) { }
+
+  private _currentUser: User
+  private _currentUserId: string
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -25,6 +33,13 @@ export class TargetService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  sendCurrentUserId(){
+    this.authenticationService.currentUser
+    .subscribe( user => this._currentUser = user)
+    this._currentUserId = this._currentUser['_id']
+    
   }
 
   getTargets (): Observable<Target[]> {

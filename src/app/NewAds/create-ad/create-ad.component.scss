@@ -1,7 +1,10 @@
+
 .stepper-wrap{
   margin:0 auto;
   margin-top:20px;
   margin-left: 20px;
+  margin-bottom: 20px;
+  margin-right:20px;
   width:100%;
 
 }
@@ -19,6 +22,10 @@
 }
 .stepButtom{
   display: flex;
-  justify-content: center
-
+  justify-content: center;
+  margin-top:30px
 }
+.nextBottom{
+  margin-left:20px
+}
+

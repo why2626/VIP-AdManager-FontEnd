@@ -1,9 +1,24 @@
-<div class="example-container">
+<div class='wrapper'>
+
+<div style='margin-top: 40px'>
+  <h3 style='color:black'>人群定向</h3>
+  <mat-divider></mat-divider>
+</div>
+
+<div class='detial-p'>
+  <p>选择用户群</p>
+</div>
+
+<div class='people-select-wrap'>
+
+<div class="people-container">
   <div class="example-loading-shade"
        *ngIf="isLoadingResults">
     <mat-spinner *ngIf="isLoadingResults" [diameter]="20"></mat-spinner>
   </div>
-  <div class="mat-elevation-z8 listContent">
+
+
+  <div class="mat-elevation-z0 listContent">
  <!--     <mat-form-field>
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
         </mat-form-field> -->
@@ -45,3 +60,46 @@
 </div>
 <!-- (click)="$event.stopPropagation()" [routerLink]="['/targets']"-->
 <!--[routerLink]="['/target-details/', row._id]"-->
+<div class='selectedPeopleContainer'>
+  <h3 style='color:black;font-weight: 250;margin-left: 30px'>已选择</h3>
+</div>
+</div>
+
+<div style='margin-top: 60px'>
+  <h3 style='color:black'>移动定向</h3>
+  <mat-divider></mat-divider>
+</div>
+
+<div class='detial-p'>
+  <p>设备系统</p>
+</div>
+<div>
+<mat-radio-group style='color:black;font-size: 20px'>
+    <mat-radio-button value="all" checked='true'>不限</mat-radio-button>
+    <mat-radio-button value="iOS" style='margin-left:40px'>iOS</mat-radio-button>
+    <mat-radio-button value="Android" style='margin-left:40px'>Android</mat-radio-button>
+</mat-radio-group>
+</div>
+<div style='margin-top: 60px'>
+  <h3 style='color:black'>出价信息</h3>
+  <mat-divider></mat-divider>
+</div>
+
+<div class='detial-p'>
+  <p>出价方式</p>
+</div>
+<div>
+    <mat-radio-group style='color:black;font-size: 19px'>
+        <mat-radio-button value="CPC" checked='true'>点击(CPC)</mat-radio-button>
+        <mat-radio-button value="CPM" style='margin-left:40px'>千次曝光(CPM)</mat-radio-button>
+    </mat-radio-group>
+</div>
+<div class='detial-p'>
+  <p>广告出价</p>
+</div>
+<mat-form-field class='startInput'>
+    <input matInput>
+    <mat-hint align="start">建议出价高于0.5元</mat-hint>
+    <span matSuffix>元/次点击</span>
+</mat-form-field>
+</div>
