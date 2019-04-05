@@ -14,29 +14,28 @@
 <div class="people-container">
   <div class="example-loading-shade"
        *ngIf="isLoadingResults">
-    <mat-spinner *ngIf="isLoadingResults" [diameter]="20"></mat-spinner>
-  </div>
+  <mat-spinner *ngIf="isLoadingResults" [diameter]="20"></mat-spinner>
+</div>
 
+<!---------------------用户群列表--------------------------->
+<div class="mat-elevation-z0 listContent">
 
-  <div class="mat-elevation-z0 listContent">
- <!--     <mat-form-field>
-          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-        </mat-form-field> -->
-    <mat-table [dataSource]="data" class="example-table"
-           matSort matSortActive="TargetNname" matSortDisableClear matSortDirection="asc" >
+    <mat-table [dataSource]="data" class="example-table">
 
     <!-- Checkbox Column -->
   <ng-container matColumnDef="select">
     <mat-header-cell *matHeaderCellDef>
       <mat-checkbox (change)="$event ? masterToggle() : null"
                     [checked]="selection.hasValue() && isAllSelected()"
-                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    (change)='showSelectedTarget()'>
       </mat-checkbox>
       </mat-header-cell>
     <mat-cell *matCellDef="let row">
       <mat-checkbox (click)="$event.stopPropagation()"
                     (change)="$event ? selection.toggle(row) : null"
-                    [checked]="selection.isSelected(row)">
+                    [checked]="selection.isSelected(row) "
+                    (change)='showSelectedTarget()'>
       </mat-checkbox>
     </mat-cell>
   </ng-container>
@@ -47,21 +46,42 @@
         <mat-cell *matCellDef="let row" >{{row.targetName}}</mat-cell>
       </ng-container>
 
-      <!-- 覆盖人群数 Column -->
+      <!-- 人群覆盖 Column -->
       <ng-container matColumnDef="peopleEstimate">
-        <mat-header-cell *matHeaderCellDef>覆盖人群数</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>人群覆盖</mat-header-cell>
         <mat-cell *matCellDef="let row">{{row.peopleEstimate}}</mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)" style='cursor: pointer;'></mat-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"
+      (click)="selection.toggle(row)" style='cursor: pointer;'
+      (click)='showSelectedTarget()'></mat-row>
     </mat-table>
   </div>
 </div>
-<!-- (click)="$event.stopPropagation()" [routerLink]="['/targets']"-->
-<!--[routerLink]="['/target-details/', row._id]"-->
+<!----------------------已选择框------------------------------>
 <div class='selectedPeopleContainer'>
-  <h3 style='color:black;font-weight: 250;margin-left: 30px'>已选择</h3>
+  <h3 style='color:black;font-weight: 250;margin-left: 30px'>已选择 ({{selectedLength}})</h3>
+  <div class="mat-elevation-z0 SelectedListContent">
+
+      <mat-table [dataSource]="selectedTarget" class="example-table" >
+
+        <!-- 人群名称 Column -->
+        <ng-container matColumnDef="targetName">
+          <mat-header-cell *matHeaderCellDef>人群名称</mat-header-cell>
+          <mat-cell *matCellDef="let row" >{{row.targetName}}</mat-cell>
+        </ng-container>
+
+        <!-- 人群覆盖 Column -->
+        <ng-container matColumnDef="peopleEstimate">
+          <mat-header-cell *matHeaderCellDef>人群覆盖</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.peopleEstimate}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="selectedTargetColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: selectedTargetColumns;"></mat-row>
+      </mat-table>
+    </div>
 </div>
 </div>
 
@@ -74,7 +94,7 @@
   <p>设备系统</p>
 </div>
 <div>
-<mat-radio-group style='color:black;font-size: 20px'>
+<mat-radio-group style='color:black;font-size: 17px'>
     <mat-radio-button value="all" checked='true'>不限</mat-radio-button>
     <mat-radio-button value="iOS" style='margin-left:40px'>iOS</mat-radio-button>
     <mat-radio-button value="Android" style='margin-left:40px'>Android</mat-radio-button>
@@ -89,7 +109,7 @@
   <p>出价方式</p>
 </div>
 <div>
-    <mat-radio-group style='color:black;font-size: 19px'>
+    <mat-radio-group style='color:black;font-size: 17px'>
         <mat-radio-button value="CPC" checked='true'>点击(CPC)</mat-radio-button>
         <mat-radio-button value="CPM" style='margin-left:40px'>千次曝光(CPM)</mat-radio-button>
     </mat-radio-group>
