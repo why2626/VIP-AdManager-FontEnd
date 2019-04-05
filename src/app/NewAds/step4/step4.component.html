@@ -1,0 +1,8 @@
+
+<div style='color:black'>
+<p> 广告名称：  {{ adName }}</p>
+<p *ngIf = '!isEndDateSet'> 投放日期：  {{ startDate | date:'yyyy-MM-dd'}} - {{ endDate | date:'yyyy-MM-dd'}} </p>
+<p *ngIf = 'isEndDateSet'> 投放日期：  从 {{ startDate | date:'yyyy-MM-dd'}} 开始长期 </p>
+
+<button (click)='show()'>show</button>
+</div>

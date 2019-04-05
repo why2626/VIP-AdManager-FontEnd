@@ -8,6 +8,7 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 import { Step2Component } from './step2/step2.component';
 import { AdPositionListComponent } from './ad-position-list/ad-position-list.component';
 import { Step3Component } from './step3/step3.component';
+import { Step4Component } from './step4/step4.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { Step3Component } from './step3/step3.component';
     Step1Component,
     Step2Component,
     Step3Component,
+    Step4Component,
     AdPositionListComponent
 
   ],

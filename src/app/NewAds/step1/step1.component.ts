@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import {DateAdapter} from '@angular/material/core';
+import { gatherAdInfoService } from 'src/app/service/gatherAdInfo';
 
 
 @Component({
@@ -19,9 +19,13 @@ export class Step1Component implements OnInit {
 
   minDate = new Date();
   endMinDate = new Date();
-  constructor(private adapter: DateAdapter<any>) { }
+
+  constructor(private gatherAdInfoService: gatherAdInfoService) { }
 
   ngOnInit() {
+    if(this.isLongSet){
+      this.isChecked = false
+    }
   }
 
   getErrorMessage() {
@@ -31,6 +35,18 @@ export class Step1Component implements OnInit {
     this.endMinDate = ev
 
   }
+  emiting(){
 
+    if(!this.isLongSet){
+      this.isChecked = true
+    }
 
+   this.gatherAdInfoService.creatingAd.adName = this.adname.value
+   this.gatherAdInfoService.creatingAd.startDate = this.startDate.value
+   this.gatherAdInfoService.creatingAd.endDate = this.endDate.value
+   this.gatherAdInfoService.creatingAd.isEndDateSet = this.isChecked
+
+   console.log(this.gatherAdInfoService.creatingAd)
+
+  }
 }

@@ -115,11 +115,27 @@
     </mat-radio-group>
 </div>
 <div class='detial-p'>
+    <p>竞价方式</p>
+  </div>
+  <div>
+      <mat-radio-group style='color:black;font-size: 17px'>
+          <mat-radio-button value="RTB" checked='true'>实时竞价(RTB)</mat-radio-button>
+          <mat-radio-button value="PDB" style='margin-left:40px'>保量交易(PDB)</mat-radio-button>
+      </mat-radio-group>
+  </div>
+<div class='detial-p'>
   <p>广告出价</p>
 </div>
-<mat-form-field class='startInput'>
-    <input matInput>
+<mat-form-field>
+    <input matInput placeholder="请输入广告出价">
     <mat-hint align="start">建议出价高于0.5元</mat-hint>
-    <span matSuffix>元/次点击</span>
+    <span matSuffix style='color:black'>元/次点击</span>
 </mat-form-field>
+<div class='detial-p'>
+    <p>日限额</p>
+</div>
+  <mat-form-field>
+      <input matInput placeholder="请输入日限额">
+      <span matSuffix style='color:black'>元/天</span>
+  </mat-form-field>
 </div>

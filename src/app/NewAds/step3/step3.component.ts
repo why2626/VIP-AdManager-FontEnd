@@ -50,7 +50,7 @@ export class Step3Component implements OnInit {
       function(row){
       if(this.selection.isSelected(row)){
         this.selectedTarget.push(row)
-    }},this)
+    }},this)  //forEach第二个参数this！！
 
     this.selectedLength = 0 //先清空
     this.selectedLength = this.selection.selected.length
