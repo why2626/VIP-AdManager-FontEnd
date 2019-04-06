@@ -72,5 +72,6 @@ export class Step3Component implements OnInit {
     this.gatherAdInfoService.creatingAd.dayLimitPrice = this.dayLimit.value
     this.gatherAdInfoService.creatingAd.adPrice = this.adPrice.value
     this.gatherAdInfoService.creatingAd.targets = this.selectedTarget
+    this.gatherAdInfoService.showAdInfo()
   }
 }

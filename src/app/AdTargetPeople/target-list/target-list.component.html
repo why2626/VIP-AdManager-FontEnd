@@ -1,5 +1,5 @@
-<div class="example-container">
-    <div class="example-loading-shade"
+<div class="container">
+    <div class="loading-shade"
          *ngIf="isLoadingResults">
       <mat-spinner *ngIf="isLoadingResults" [diameter]="20"></mat-spinner>
     </div>
@@ -7,7 +7,7 @@
       <a mat-flat-button color="primary" [routerLink]="['/target-add']">新建</a>
     </div>
     <div class="mat-elevation-z8 listContent">
-      <mat-table [dataSource]="data" class="example-table"
+      <mat-table [dataSource]="data" class="table"
              matSort matSortActive="TargetNname" matSortDisableClear matSortDirection="asc">
 
         <!-- 人群名称 Column -->
@@ -44,5 +44,6 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/target-details/', row._id]" style='cursor: pointer;'></mat-row>
       </mat-table>
     </div>
+   <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons #paginator></mat-paginator>-->
   </div>
 <!-- (click)="$event.stopPropagation()" [routerLink]="['/targets']"-->

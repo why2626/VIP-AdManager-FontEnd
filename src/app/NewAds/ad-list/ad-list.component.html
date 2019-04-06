@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="loading-shade"
+         *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults" [diameter]="20"></mat-spinner>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/newAd']">新建</a>
+    </div>
+    <div class="mat-elevation-z8 listContent">
+      <mat-table [dataSource]="AdDataList" class="table"
+             matSort matSortActive="TargetNname" matSortDisableClear matSortDirection="asc">
+
+        <!-- 广告名称 Column -->
+        <ng-container matColumnDef="adName">
+          <mat-header-cell *matHeaderCellDef>广告名称</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.adName}}</mat-cell>
+        </ng-container>
+
+        <!-- 出价 Column -->
+        <ng-container matColumnDef="adPrice">
+          <mat-header-cell *matHeaderCellDef>出价</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.adPrice}}</mat-cell>
+        </ng-container>
+
+        <!-- 开关 Column -->
+        <ng-container matColumnDef="turnedOn">
+          <mat-header-cell *matHeaderCellDef>开关</mat-header-cell>
+          <mat-cell *matCellDef="let row"></mat-cell>
+        </ng-container>
+
+        <!-- 状态 Column -->
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef>状态</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.status}}</mat-cell>
+        </ng-container>
+
+        <!-- 操作 Column -->
+        <ng-container matColumnDef="operation">
+            <mat-header-cell *matHeaderCellDef>操作</mat-header-cell>
+            <mat-cell *matCellDef="let row"><button mat-button (click)="deleteTarget(row._id)" style='padding:0'><mat-icon>delete</mat-icon></button></mat-cell>
+        </ng-container>
+
+        <!-- 花费 Column -->
+        <ng-container matColumnDef="spentMoney">
+            <mat-header-cell *matHeaderCellDef>花费</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.spentMoney}}</mat-cell>
+        </ng-container>
+
+        <!-- 曝光量 Column -->
+        <ng-container matColumnDef="exposure">
+            <mat-header-cell *matHeaderCellDef>曝光量</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.exposure}}</mat-cell>
+        </ng-container>
+
+        <!-- 点击量 Column -->
+        <ng-container matColumnDef="clickCount">
+            <mat-header-cell *matHeaderCellDef>点击量</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.clickCount}}</mat-cell>
+        </ng-container>
+        <!-- 点击率 Column -->
+        <ng-container matColumnDef="clickRate">
+            <mat-header-cell *matHeaderCellDef>点击率</mat-header-cell>
+            <mat-cell *matCellDef="let row"></mat-cell>
+        </ng-container>
+        <!-- 竞价方式 Column -->
+        <ng-container matColumnDef="compativeType">
+            <mat-header-cell *matHeaderCellDef>竞价方式</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.compativeType}}</mat-cell>
+        </ng-container>
+        <!-- 创建时间 Column -->
+        <ng-container matColumnDef="createTime">
+            <mat-header-cell *matHeaderCellDef>创建时间</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.createTime | date:'yyyy-MM-dd'}}</mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/target-details/', row._id]" style='cursor: pointer;'></mat-row>
+      </mat-table>
+    </div>
+   <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons #paginator></mat-paginator>-->
+  </div>
+<!-- (click)="$event.stopPropagation()" [routerLink]="['/targets']"-->
+

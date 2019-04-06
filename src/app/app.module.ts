@@ -13,18 +13,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { HomeModule } from './home/home.module';
-import { TargetDetailsComponent } from './AdTargetPeople/target-details/target-details.component';
-import { AddTargetComponent } from './AdTargetPeople/add-target/add-target.component';
-import { EditTargetComponent } from './AdTargetPeople/edit-target/edit-target.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TargetDetailsComponent,
-    AddTargetComponent,
-    EditTargetComponent,
   ],
-
   imports: [
     BrowserModule,
     SharedModule,
@@ -36,14 +29,10 @@ import { EditTargetComponent } from './AdTargetPeople/edit-target/edit-target.co
     LoginModule,
     HttpClientModule,
     AppRoutingModule,
-
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-    // provider used to create fake backend
-   // fakeBackendProvider      //to switch to a real backend simply remove the providers located below the comment
   ],
   bootstrap: [AppComponent]
 })

@@ -1,29 +1,27 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { TargetService } from 'src/app/service/target.service';
-import { Target } from 'src/app/models';
+import { Component, OnInit } from '@angular/core';
+import { Ad } from 'src/app/models';
 import { Router } from '@angular/router';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { AdService } from 'src/app/service';
 
 @Component({
-  selector: 'app-target-list',
-  templateUrl: './target-list.component.html',
-  styleUrls: ['./target-list.component.scss']
+  selector: 'app-ad-list',
+  templateUrl: './ad-list.component.html',
+  styleUrls: ['./ad-list.component.scss']
 })
-export class TargetListComponent implements OnInit {
+export class AdListComponent implements OnInit {
 
-
-  displayedColumns: string[] = ['targetName', 'platform', 'peopleEstimate', 'createTime', 'operation'];
-  data: Target[] = [];
+  displayedColumns: string[] = ['adName', 'adPrice', 'turnedOn', 'status', 'operation','spentMoney','exposure','clickCount','clickRate','compativeType','createTime'];
+  AdDataList: Ad[] = [];
   isLoadingResults = true;
   //dataSource = new MatTableDataSource<Target>(this.data);
  // @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private targetService: TargetService,private router: Router) { }
+  constructor(private adService: AdService,private router: Router) { }
 
   ngOnInit() {  //get list of targets immediately.
-    this.targetService.getTargets()
+    this.adService.getAds()
     .subscribe(res => {
-      this.data = res;
+      this.AdDataList = res;
       this.isLoadingResults = false;
     }, err => {
       console.log(err);
@@ -33,7 +31,7 @@ export class TargetListComponent implements OnInit {
   }
   deleteTarget(_id) {
     this.isLoadingResults = true;
-    this.targetService.deleteTarget(_id)
+    this.adService.deleteAd(_id)
       .subscribe(res => {
           this.isLoadingResults = false;
           this.router.navigate(['/targets']);

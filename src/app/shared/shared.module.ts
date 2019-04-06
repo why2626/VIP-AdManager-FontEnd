@@ -30,6 +30,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FilterPipeComponent } from './filter-pipe/filter-pipe.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [FilterPipeComponent],
@@ -64,7 +65,8 @@ import { FilterPipeComponent } from './filter-pipe/filter-pipe.component';
     MatButtonToggleModule,
     MatExpansionModule,
     NgMultiSelectDropDownModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatPaginatorModule
 
 
 

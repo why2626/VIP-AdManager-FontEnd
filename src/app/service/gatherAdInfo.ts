@@ -5,9 +5,13 @@ import { Ad } from '../models/Ad';
 @Injectable({ providedIn: 'root' })
 export class gatherAdInfoService {
 
+  private listener = new Subject<any>()
   public creatingAd = new Ad
 
+  listen(): Observable<any>{
+    return this.listener.asObservable()
+  }
   showAdInfo(){
-    console.log(this.creatingAd)
+    this.listener.next()
   }
 }

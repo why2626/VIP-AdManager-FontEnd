@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:4000',
   targetApiUrl: "http://localhost:4000/targets",
-
+  adApiUrl: "http://localhost:4000/ads",
 };
 
 /*

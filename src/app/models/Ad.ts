@@ -2,13 +2,14 @@ import { Target } from './target';
 import { AdPosition } from './adPosition';
 
 export class Ad{
+  _id? : string
   adName: string; //广告名称
-  isEndDateSet: boolean;
-  startDate: Date;
-  endDate: Date;
+  isEndDateSet: boolean; //是否有设置从今天开始长期
+  startDate: Date; //投放开始日期
+  endDate: Date; //投放结束日期
   vipAPP: string; //投放站点
   adPosition: AdPosition; //资源位
-  uploadedImage: string; //图片
+  uploadedImage?: string; //图片
   linkType: string; //落地页类型
   linkID: string; //落地页链接
   targets: Target[]; //人群包
@@ -17,5 +18,10 @@ export class Ad{
   compativeType: string; //竞价方式
   adPrice: number; //广告出价
   dayLimitPrice: number; //日限额
-
+  turnedOn?: boolean // 开关
+  status? : string //状态
+  spentMoney?: number //花费
+  exposure?: number //曝光量
+  clickCount? : number //点击量
+  createTime: Date;
 }

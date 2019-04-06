@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { gatherAdInfoService } from 'src/app/service/gatherAdInfo';
-import { Target } from 'src/app/models';
+import { Target, Ad } from 'src/app/models';
 import { AdPosition } from 'src/app/models/adPosition'
+import { AdService } from 'src/app/service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-step4',
   templateUrl: './step4.component.html',
@@ -25,14 +27,19 @@ export class Step4Component implements OnInit {
   adPosition: AdPosition
   selectedAdId : number
   url: string
+  newAd: Ad
 
-  constructor(private gatherAdInfoService: gatherAdInfoService) { }
+  constructor(private gatherAdInfoService: gatherAdInfoService,
+     private adService: AdService,
+     private router: Router) {
+    this.gatherAdInfoService.listen().subscribe(() => {
+      this.showAdInfo()  //订阅，step3有定义，点击step3下一步就可以在step4立即显示
+    })
+   }
 
   ngOnInit() {
   }
-
-
-  show(){
+  showAdInfo(){
     this.adName = this.gatherAdInfoService.creatingAd.adName
     this.isEndDateSet = this.gatherAdInfoService.creatingAd.isEndDateSet
     this.startDate = this.gatherAdInfoService.creatingAd.startDate
@@ -49,5 +56,18 @@ export class Step4Component implements OnInit {
     this.adPosition = this.gatherAdInfoService.creatingAd.adPosition
     this.selectedAdId = this.adPosition.id
     this.url = this.gatherAdInfoService.creatingAd.uploadedImage
+    this.newAd = this.gatherAdInfoService.creatingAd
   }
+  submitAd(){
+    this.adService.addAd(this.newAd)
+    .subscribe(res => {
+   this.router.navigate(['/ads']);
+    }, (err) => {
+    console.log(err);
+   });
+
+}
+
+
+
 }

@@ -7,6 +7,8 @@ import { CategoryBehaviorComponent } from './category-behavior/category-behavior
 import { BrandBehaviorComponent } from './brand-behavior/brand-behavior.component';
 import { GenderAgeInfoComponent } from './gender-age-info/gender-age-info.component';
 import { TargetListComponent } from './target-list/target-list.component';
+import { TargetDetailsComponent } from './target-details/target-details.component';
+import { EditTargetComponent } from './edit-target/edit-target.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { TargetListComponent } from './target-list/target-list.component';
     CategoryBehaviorComponent,
     BrandBehaviorComponent,
     GenderAgeInfoComponent,
-    TargetListComponent
+    TargetListComponent,
+    TargetDetailsComponent,
+    EditTargetComponent,
   ],
   imports: [
     SharedModule,
