@@ -23,9 +23,6 @@ export class Step1Component implements OnInit {
   constructor(private gatherAdInfoService: gatherAdInfoService) { }
 
   ngOnInit() {
-    if(this.isLongSet){
-      this.isChecked = false
-    }
   }
 
   getErrorMessage() {

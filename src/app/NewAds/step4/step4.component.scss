@@ -1,0 +1,39 @@
+.stepButtom{
+  display: flex;
+  justify-content: center;
+  margin-top:30px
+}
+.nextBottom{
+  margin-left:20px
+}
+p{
+  color:rgb(104, 102, 102)
+}
+span{
+  color:black;
+  margin-left: 30px
+}
+.showTargetsName{
+  line-height:30px;
+}
+.targetWrap{
+  display: flex;
+  flex-direction: row;
+  height: 100%
+}
+.showInfoWrap{
+  display: flex;
+  flex-direction: row;
+
+}
+.phoneArea{
+  width:255px;
+  margin-left: 300px;
+  margin-top: 50px;
+  display: block;
+  height:504px;
+}
+.phone{
+  width:255px;
+  height: 504px
+}

@@ -1,9 +1,5 @@
-<p>
-    新建广告
-</p>
-<p>
-    投放站点
-</p>
+<h3 style='color:black'>新建广告</h3>
+<p>投放站点</p>
 <div class='alignSite'>
 <mat-form-field>
     <mat-select placeholder="投放站点" [(value)]='adPuttingSite'>
@@ -13,14 +9,10 @@
     </mat-select>
   </mat-form-field>
 </div>
-  <p>
-      资源位
-    </p>
+  <p>资源位</p>
 <app-ad-position-list></app-ad-position-list>
 
-<p>
-  落地页类型
-</p>
+<p>落地页类型</p>
 <div class='alignSite'>
 <mat-form-field>
     <mat-select placeholder="请选择落地页类型" [(value)]='selectedAdSite'>
@@ -30,9 +22,7 @@
     </mat-select>
   </mat-form-field>
 </div>
-<p>
-  档期ID
-</p>
+<p>档期ID</p>
 <div class='alignSite'>
 <form class="example-form">
     <mat-form-field class="example-full-width" class='item-id'>
@@ -40,4 +30,8 @@
       <mat-error *ngIf="itemId.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
 </form>
+</div>
+<div class='stepButtom'>
+    <button mat-raised-button matStepperPrevious>上一步</button>
+    <button mat-raised-button matStepperNext color='primary' class='nextBottom' (click)='emiting()'>下一步</button>
 </div>

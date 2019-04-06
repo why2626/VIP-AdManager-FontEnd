@@ -94,8 +94,8 @@
   <p>设备系统</p>
 </div>
 <div>
-<mat-radio-group style='color:black;font-size: 17px'>
-    <mat-radio-button value="all" checked='true'>不限</mat-radio-button>
+<mat-radio-group style='color:black;font-size: 17px' [(ngModel)]='selectedDevice'>
+    <mat-radio-button value="不限" checked='true'>不限</mat-radio-button>
     <mat-radio-button value="iOS" style='margin-left:40px'>iOS</mat-radio-button>
     <mat-radio-button value="Android" style='margin-left:40px'>Android</mat-radio-button>
 </mat-radio-group>
@@ -109,25 +109,25 @@
   <p>出价方式</p>
 </div>
 <div>
-    <mat-radio-group style='color:black;font-size: 17px'>
-        <mat-radio-button value="CPC" checked='true'>点击(CPC)</mat-radio-button>
-        <mat-radio-button value="CPM" style='margin-left:40px'>千次曝光(CPM)</mat-radio-button>
+    <mat-radio-group style='color:black;font-size: 16px' [(ngModel)]='pricingType'>
+        <mat-radio-button value="点击(CPC)" checked='true'>点击(CPC)</mat-radio-button>
+        <mat-radio-button value="千次曝光(CPM)" style='margin-left:40px'>千次曝光(CPM)</mat-radio-button>
     </mat-radio-group>
 </div>
 <div class='detial-p'>
     <p>竞价方式</p>
   </div>
   <div>
-      <mat-radio-group style='color:black;font-size: 17px'>
-          <mat-radio-button value="RTB" checked='true'>实时竞价(RTB)</mat-radio-button>
-          <mat-radio-button value="PDB" style='margin-left:40px'>保量交易(PDB)</mat-radio-button>
+  <mat-radio-group style='color:black;font-size: 16px' [(ngModel)]='compativeType'>
+          <mat-radio-button value="实时竞价(RTB)" checked='true'>实时竞价(RTB)</mat-radio-button>
+          <mat-radio-button value="保量交易(PDB)" style='margin-left:40px'>保量交易(PDB)</mat-radio-button>
       </mat-radio-group>
   </div>
 <div class='detial-p'>
   <p>广告出价</p>
 </div>
 <mat-form-field>
-    <input matInput placeholder="请输入广告出价">
+    <input matInput placeholder="请输入广告出价" [formControl]="adPrice" required="">
     <mat-hint align="start">建议出价高于0.5元</mat-hint>
     <span matSuffix style='color:black'>元/次点击</span>
 </mat-form-field>
@@ -135,7 +135,11 @@
     <p>日限额</p>
 </div>
   <mat-form-field>
-      <input matInput placeholder="请输入日限额">
+      <input matInput placeholder="请输入日限额" [formControl]="dayLimit" required="">
       <span matSuffix style='color:black'>元/天</span>
   </mat-form-field>
+</div>
+<div class='stepButtom'>
+    <button mat-raised-button matStepperPrevious>上一步</button>
+    <button mat-raised-button matStepperNext color='primary' class='nextBottom' (click)='emiting()'>下一步</button>
 </div>

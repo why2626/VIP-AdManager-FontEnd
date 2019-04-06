@@ -1,4 +1,5 @@
 import { Target } from './target';
+import { AdPosition } from './adPosition';
 
 export class Ad{
   adName: string; //广告名称
@@ -6,11 +7,11 @@ export class Ad{
   startDate: Date;
   endDate: Date;
   vipAPP: string; //投放站点
-  adPosition: string; //资源位
+  adPosition: AdPosition; //资源位
   uploadedImage: string; //图片
   linkType: string; //落地页类型
   linkID: string; //落地页链接
-  target: Target[]; //人群包
+  targets: Target[]; //人群包
   divices: string; //设备系统
   pricingType: string; //出价方式
   compativeType: string; //竞价方式

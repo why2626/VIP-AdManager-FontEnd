@@ -2,6 +2,8 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
 import { Target } from 'src/app/models';
 import { TargetService } from 'src/app/service/target.service';
+import { gatherAdInfoService } from 'src/app/service/gatherAdInfo';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-step3',
@@ -19,8 +21,16 @@ export class Step3Component implements OnInit {
   isLoadingResults = true;
   selection = new SelectionModel<Target>(true, [])
   selectedLength = 0
+  selectedDevice = '不限'
+  pricingType = '点击(CPC)'
+  compativeType = '实时竞价(RTB)'
+  adPrice = new FormControl('',[Validators.required])
+  dayLimit = new FormControl('',[Validators.required])
 
-  constructor(private targetService: TargetService) { }
+  constructor(
+    private targetService: TargetService,
+    private gatherAdInfoService: gatherAdInfoService,
+    ) { }
 
   ngOnInit() {  //get list of targets immediately.
     this.targetService.getTargets()
@@ -54,5 +64,13 @@ export class Step3Component implements OnInit {
 
     this.selectedLength = 0 //先清空
     this.selectedLength = this.selection.selected.length
+  }
+  emiting(){
+    this.gatherAdInfoService.creatingAd.divices = this.selectedDevice
+    this.gatherAdInfoService.creatingAd.pricingType = this.pricingType
+    this.gatherAdInfoService.creatingAd.compativeType = this.compativeType
+    this.gatherAdInfoService.creatingAd.dayLimitPrice = this.dayLimit.value
+    this.gatherAdInfoService.creatingAd.adPrice = this.adPrice.value
+    this.gatherAdInfoService.creatingAd.targets = this.selectedTarget
   }
 }

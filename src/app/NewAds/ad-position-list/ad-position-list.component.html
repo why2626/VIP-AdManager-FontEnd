@@ -3,22 +3,19 @@
   <div class='listArea'>
   <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-<!--- Note that these columns can be defined in any order.
-      The actual rendered columns are set as a property on the row definition" -->
-<!-- Checkbox Column -->  <!--(click)='selectedAdPos(selectedAd)'-->
+<!-- Checkbox Column -->
 <ng-container matColumnDef="select">
-    <mat-header-cell *matHeaderCellDef></mat-header-cell>
-    <mat-cell *matCellDef="let row">
-        <mat-radio-group [(ngModel)]='selectedAd'>
+    <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-radio-group>
             <mat-radio-button
             [checked]="selection.isSelected(row)"
             [value]='row.id'
-            (click)='selectedAdPos(selectedAd)'
-            >
-          </mat-radio-button>
+            (click)='selectedAdPos(row)'>
+            </mat-radio-button>
         </mat-radio-group>
-        </mat-cell>
-  </ng-container>
+      </mat-cell>
+</ng-container>
 
 <!-- Position Column -->
 <ng-container matColumnDef="position">
@@ -54,7 +51,11 @@
 
 
 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-<mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+<mat-row
+*matRowDef="let row; columns: displayedColumns"
+style='cursor: pointer;'
+(click)='checkChange(row)'
+(click)='selectedAdPos(row)'></mat-row>
 
 </mat-table>
 </div>
@@ -66,12 +67,12 @@
       <div style='width:250px;height:150px;background: rgb(235, 234, 234);border: 1px dashed gray'>
         <div style='display: flex;flex-direction: column;align-content: center' >
           <p style='text-align: center'>上传图片</p>
-          <p style='text-align: center' *ngIf='selectedAd==1'>750x300    100k</p>
-          <p style='text-align: center' *ngIf='selectedAd==2'>750x156    100k</p>
-          <p style='text-align: center' *ngIf='selectedAd==3'>720x226    100k</p>
-          <p style='text-align: center' *ngIf='selectedAd==4'>1065x183    100k</p>
-          <p style='text-align: center' *ngIf='selectedAd==5'>750x256    200k</p>
-          <p style='text-align: center' *ngIf='selectedAd==6'>720x226    400k</p>
+          <p style='text-align: center' *ngIf='selectedAdId==1'>750x300    100k</p>
+          <p style='text-align: center' *ngIf='selectedAdId==2'>750x156    100k</p>
+          <p style='text-align: center' *ngIf='selectedAdId==3'>720x226    100k</p>
+          <p style='text-align: center' *ngIf='selectedAdId==4'>1065x183    100k</p>
+          <p style='text-align: center' *ngIf='selectedAdId==5'>750x256    200k</p>
+          <p style='text-align: center' *ngIf='selectedAdId==6'>720x226    400k</p>
           <input type="file" (change)="onFileChanged($event)" style='margin-left:45px' >
           <button (click)="cancelFileUpload($event)" style='margin-left:100px;width:40px'>取消</button>
 
@@ -86,12 +87,12 @@
 
 
 
-    <img *ngIf='selectedAd==1' class='adImg' src='/assets/img/首页焦点第三四帧.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;z-index: 1;'>
-    <img *ngIf='selectedAd==2' class='adImg' src='/assets/img/收藏顶部及物流页底部横幅.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
-    <img *ngIf='selectedAd==3' class='adImg' src='/assets/img/个人设置页顶部轮播.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
-    <img *ngIf='selectedAd==4' class='adImg' src='/assets/img/优惠券页顶部横幅.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
-    <img *ngIf='selectedAd==5' class='adImg' src='/assets/img/美妆焦点第二帧.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
-    <img *ngIf='selectedAd==6' class='adImg' src='/assets/img/美妆频道精彩活动运营位.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
+    <img *ngIf='selectedAdId==1' class='adImg' src='/assets/img/首页焦点第三四帧.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;z-index: 1;'>
+    <img *ngIf='selectedAdId==2' class='adImg' src='/assets/img/收藏顶部及物流页底部横幅.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
+    <img *ngIf='selectedAdId==3' class='adImg' src='/assets/img/个人设置页顶部轮播.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
+    <img *ngIf='selectedAdId==4' class='adImg' src='/assets/img/优惠券页顶部横幅.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
+    <img *ngIf='selectedAdId==5' class='adImg' src='/assets/img/美妆焦点第二帧.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
+    <img *ngIf='selectedAdId==6' class='adImg' src='/assets/img/美妆频道精彩活动运营位.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
 
 
 
