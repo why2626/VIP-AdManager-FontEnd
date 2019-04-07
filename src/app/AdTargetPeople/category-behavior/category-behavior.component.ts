@@ -15,8 +15,9 @@ export class CategoryBehaviorComponent implements OnInit {
   masterSelected =[];
   public keepOriginalOrder = (a, b) => a.key
   checkedList: any;
-  allCheckedList = [];
-  selectedItems :any;
+  selectedItems = []
+  selectedCount = []
+  countNum = 0
 
   checkListObject: {[key: string]: any} = {
     '鞋': [
@@ -101,6 +102,8 @@ export class CategoryBehaviorComponent implements OnInit {
     ],
   }
 
+  //selection = new SelectionModel<checkListObject>(true, [])
+
   @Output() category_button_1: EventEmitter<string> = new EventEmitter<string>()
   @Output() category_button_2: EventEmitter<string> = new EventEmitter<string>()
   @Output() category_button_3: EventEmitter<string> = new EventEmitter<string>()
@@ -116,34 +119,62 @@ export class CategoryBehaviorComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-
+  //------点击masterselect的选中，则把下面的全选中
   checkUncheckAll(checklist: KeyValue<string, any>, j:number) {
     var list = checklist.value;  //当前masterselect下的几条对象
     for (var i = 0; i < list.length; i++) {
       list[i].isSelected = this.masterSelected[j];
     }
-    this.getCheckedItemList(checklist);
+    this.getCheckedItemList(checklist,j)
   }
-
+  //-------全选中则把masterselect也改成选中
   isAllSelected(checklist: KeyValue<string, any>, j:number) {
     var list = checklist.value;
     this.masterSelected[j] = list.every(function(item:any) {
         return item.isSelected == true;
       })
-    this.getCheckedItemList(checklist);
   }
-
-  getCheckedItemList(checklist: KeyValue<string, any>){
+  //------用于判断masterselect是否应该显示中间符号，只要有一个选中但不是全部选中，则显示
+  atLestOneSelected(checklist: KeyValue<string, any>, j:number){
     var list = checklist.value;
-    var key = checklist.key;
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].isSelected && !this.masterSelected[j])
+      return true
+   }
+  }
+  //-------selectedItems必须是二维数组才能保存每一个类选择的东西
+  getCheckedItemList(checklist: KeyValue<string, any>, j:number){
+    var list = checklist.value;
+    this.selectedItems[j] = []
+    //this.selectedCount[j] = 0
     this.checkedList = [];
     for (var i = 0; i < list.length; i++) {
-        if (list[i].isSelected)
-        this.checkedList.push(list[i]['name']);
+        if (list[i].isSelected){
+        this.checkedList.push(list[i]['name'])
+     //   this.selectedCount[j] = this.selectedCount[j]+1
+        }
     }
-    for( let j = 0; j< key.length; j++){
-    this.selectedItems = this.checkedList[j];}
+    this.checkedList.forEach(name => {
+        this.selectedItems[j].push(name)
+    });
+    /*
+    for(var p = 0; p<this.selectedCount.length;p++){
+      this.countNum = this.selectedCount[p]+this.countNum
+    }
+    console.log(this.countNum)
+    */
   }
+  /*
+  getCount(){
+    for(var i = 0; i<this.selectedItems.length;i++){
+      for(var j = 0; j<this.selectedItems[i].length;j++){
+        if(this.selectedItems[i][j]){
+          this.selectedCount++
+        }
+      }
+    }
+  }
+  */
 //-------同一时间最多只能展开一个-------
   step :number;
 

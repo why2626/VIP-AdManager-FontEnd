@@ -5,17 +5,20 @@
 .showSelectedArea{
   width:315px;
   height:384px;
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
   border: 1px solid rgb(221, 220, 220);
   border-radius: 8px;
 }
 .selectArea{
   width:315px;
   height:384px;
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
   border: 1px solid rgb(221, 220, 220);
   border-radius: 8px;
   font-size: 9px;
+  margin-top:20px;
 }
 mat-checkbox{
   font-size: 13px;
@@ -24,5 +27,5 @@ mat-checkbox{
 }
 .title, .selectArea, .showSelectedArea{
   margin:20px;
-  
+
 }

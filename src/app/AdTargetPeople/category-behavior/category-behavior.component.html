@@ -7,7 +7,7 @@
 <div class='selectArea'>
 
 
-<div>
+<div style='margin-top:20px'>
   <div *ngFor = 'let item of checkListObject | keyvalue:keepOriginalOrder; let i = index'>
     <mat-accordion >
       <!-----同一时间最多只能展开一个----->
@@ -19,9 +19,10 @@
           <mat-expansion-panel-header [collapsedHeight]="'36px'" [expandedHeight]="'36px'">
       <mat-checkbox
       [(ngModel)]="masterSelected[i]"
-      name="shoes" value="m1"
       (change)="checkUncheckAll(item,i)"
       (click)="$event.stopPropagation()"
+      [indeterminate]="!isAllSelected(item,i) && atLestOneSelected(item,i)"
+      (change)='getCheckedItemList(item)'
        >{{item.key}}</mat-checkbox>
    </mat-expansion-panel-header>
       <div>
@@ -30,9 +31,9 @@
 
       <mat-checkbox
       [(ngModel)]="items.isSelected"
-      name="shoes"
       value="{{items.id}}"
       (change)="isAllSelected(item,i)"
+      (change)='getCheckedItemList(item,i)'
       >{{items.name}}</mat-checkbox>
 
       </mat-list-item >
@@ -45,9 +46,9 @@
 </div>
 
 <div class='showSelectedArea'>
-  <div style='margin:20px;color:black'>
+  <div style='margin:20px;color:rgb(39, 15, 15)'>
     <p>已选</p>
-    <p style='font-size:14px;padding-left: 8px;'>{{selectedItems}}</p>
+    <p style='font-size:14px;padding-left: 8px;' *ngFor = 'let item of selectedItems'>{{item}}</p>
   </div>
 </div>
 </div>
