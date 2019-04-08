@@ -17,6 +17,7 @@ export class TargetDetailsComponent implements OnInit {
     createTime: null,
     gender: '',
     age: '',
+    category: [],
     userBtn_1: '',
     userBtn_2: '',
     userBtn_3: '',

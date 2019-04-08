@@ -28,6 +28,9 @@
       <p>{{categBtn_4}}</p>
       <p>{{categBtn_5}}</p>
 
+      <p *ngIf='categroItems'>一二级品类：</p>
+      <p *ngFor="let item of categroItems" style='margin-left:40px'>{{item}}</p>
+
       <p>{{branBtn_1}}</p>
       <p>{{branBtn_2}}</p>
       <p>{{branBtn_3}}</p>

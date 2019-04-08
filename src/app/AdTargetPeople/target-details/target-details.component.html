@@ -14,7 +14,7 @@
       </mat-card-header>
       <mat-card-content>
       <div class='cardContent'>
-          <p>平台: {{target.platform}}</p>
+          <p *ngIf='target.platform'>平台:  {{target.platform}}</p>
 
           <p>{{target.gender}}</p>
 
@@ -24,6 +24,10 @@
           <p>{{target.userBtn_3}}</p>
           <p>{{target.userBtn_4}}</p>
           <p>{{target.userBtn_5}}</p>
+
+          <p *ngIf='target.category'>一二级品类：</p>
+          <p *ngFor="let item of target.category" style='margin-left:60px'>{{item}}</p>
+
 
           <p>{{target.categBtn_1}}</p>
           <p>{{target.categBtn_2}}</p>

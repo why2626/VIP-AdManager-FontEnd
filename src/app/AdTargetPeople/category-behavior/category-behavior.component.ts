@@ -1,5 +1,6 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { KeyValue } from '@angular/common';
+import { gatherTargetInfoService } from 'src/app/service';
 
 @Component({
   selector: 'app-category-behavior',
@@ -116,7 +117,7 @@ export class CategoryBehaviorComponent implements OnInit {
   btn_4_val : string;
   btn_5_val : string;
 
-  constructor() {}
+  constructor(private gatherTargetInfoService: gatherTargetInfoService) {}
 
   ngOnInit() {}
   //------点击masterselect的选中，则把下面的全选中
@@ -157,7 +158,10 @@ export class CategoryBehaviorComponent implements OnInit {
     this.checkedList.forEach(name => {
         this.selectedItems[j].push(name)
     });
+    this.gatherTargetInfoService.categroItems = this.selectedItems
+    this.gatherTargetInfoService.showTargetInfo()
     /*
+
     for(var p = 0; p<this.selectedCount.length;p++){
       this.countNum = this.selectedCount[p]+this.countNum
     }

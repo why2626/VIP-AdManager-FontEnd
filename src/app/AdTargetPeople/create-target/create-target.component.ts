@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder, NgForm } from '@angular/forms';
 import { TargetService } from 'src/app/service/target.service';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/service';
+import { AuthenticationService, gatherTargetInfoService } from 'src/app/service';
 import { User } from 'src/app/models';
 
 @Component({
@@ -18,6 +18,8 @@ export class CreateTargetComponent implements OnInit {
 
   ageSelectedItems: string;
   genderSelectedItems: string;
+
+  categroItems: any
 
   userBtn_1: any;
   userBtn_2: any;
@@ -47,7 +49,9 @@ export class CreateTargetComponent implements OnInit {
     private targetService: TargetService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService){}
+    private gatherTargetInfoService: gatherTargetInfoService){
+      this.gatherTargetInfoService.listen().subscribe( () => {this.showTargetInfo()})
+    }
 
   ngOnInit() {
     this.target_form();
@@ -60,6 +64,7 @@ export class CreateTargetComponent implements OnInit {
       createTime : [(new Date()).toLocaleDateString, Validators.required],
       gender: [null],
       age: [null],
+      category: [null],
       userBtn_1: [null],
       userBtn_2: [null],
       userBtn_3: [null],
@@ -79,6 +84,10 @@ export class CreateTargetComponent implements OnInit {
     });
   }
 
+  showTargetInfo(){
+      this.categroItems = this.gatherTargetInfoService.categroItems
+      this.targetForm.controls['category'].patchValue(this.categroItems)
+  }
   getErrorMessage() {
     return this.targetName.hasError('required') ? '人群名称不能为空' : '';
   }
