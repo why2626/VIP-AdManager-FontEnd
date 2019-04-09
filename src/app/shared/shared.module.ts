@@ -27,10 +27,10 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatExpansionModule} from '@angular/material/expansion';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FilterPipeComponent } from './filter-pipe/filter-pipe.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {SuiModule} from 'ng2-semantic-ui';
 
 @NgModule({
   declarations: [FilterPipeComponent],
@@ -64,14 +64,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatTabsModule,
     MatButtonToggleModule,
     MatExpansionModule,
-    NgMultiSelectDropDownModule,
     MatProgressSpinnerModule,
-    MatPaginatorModule
-
-
-
-
-
+    MatPaginatorModule,
+    SuiModule
 
   ],
   exports:[
@@ -104,8 +99,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatTabsModule,
     MatButtonToggleModule,
     MatExpansionModule,
-    NgMultiSelectDropDownModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    SuiModule
 
 
   ],

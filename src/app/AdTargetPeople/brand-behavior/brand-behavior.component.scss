@@ -1,9 +1,17 @@
-.ng-multiselect-dropdown{
-  outline:none;
+.dropdown-wrap{
+  display: flex;
+  flex-direction: row;
+  margin:20px;
+  align-items: center;
+  height:38px;
 }
-.ng-multiselect-dropdown:focus{
-  outline: none
+.multi-select-compo{
+  border:1px solid rgb(186, 187, 186);
+  border-radius: 7px;
+  margin:0 16px;
 }
-.dropdown :focus{
-  outline: none
+.dropdown-title{
+  font-size: 15px;
+  margin:0 20px;
+
 }
