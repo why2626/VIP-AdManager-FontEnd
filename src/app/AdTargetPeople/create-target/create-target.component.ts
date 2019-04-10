@@ -20,6 +20,7 @@ export class CreateTargetComponent implements OnInit {
   genderSelectedItems: string;
 
   categroItems: any
+  brandItems: any
 
   userBtn_1: any;
   userBtn_2: any;
@@ -50,7 +51,11 @@ export class CreateTargetComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private gatherTargetInfoService: gatherTargetInfoService){
-      this.gatherTargetInfoService.listen().subscribe( () => {this.showTargetInfo()})
+      this.gatherTargetInfoService.listen().subscribe( () => {                this.showCategroInfo()
+      })
+      this.gatherTargetInfoService.brandListen().subscribe( () => {
+           this.showBrandInfo()
+      })
     }
 
   ngOnInit() {
@@ -65,6 +70,7 @@ export class CreateTargetComponent implements OnInit {
       gender: [null],
       age: [null],
       category: [null],
+      brand:[null],
       userBtn_1: [null],
       userBtn_2: [null],
       userBtn_3: [null],
@@ -84,9 +90,13 @@ export class CreateTargetComponent implements OnInit {
     });
   }
 
-  showTargetInfo(){
+  showCategroInfo(){
       this.categroItems = this.gatherTargetInfoService.categroItems
       this.targetForm.controls['category'].patchValue(this.categroItems)
+  }
+  showBrandInfo(){
+      this.brandItems = this.gatherTargetInfoService.brandItems
+      this.targetForm.controls['brand'].patchValue(this.brandItems)
   }
   getErrorMessage() {
     return this.targetName.hasError('required') ? '人群名称不能为空' : '';

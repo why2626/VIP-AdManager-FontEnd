@@ -35,6 +35,9 @@
           <p>{{target.categBtn_4}}</p>
           <p>{{target.categBtn_5}}</p>
 
+          <p *ngIf='target.brand'>品牌名称：</p>
+          <p *ngFor="let item of target.brand" style='margin-left:60px'>{{item.name}}</p>
+
           <p>{{target.branBtn_1}}</p>
           <p>{{target.branBtn_2}}</p>
           <p>{{target.branBtn_3}}</p>

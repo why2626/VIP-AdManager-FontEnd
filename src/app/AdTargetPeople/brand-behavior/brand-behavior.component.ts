@@ -1,7 +1,8 @@
 import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { gatherTargetInfoService } from 'src/app/service';
 
-export interface IOption {
-  id: string,
+export interface SelectOption {
+  id: number,
   name: string
 }
 
@@ -19,30 +20,26 @@ export class BrandBehaviorComponent implements OnInit {
   @Output() brand_button_4: EventEmitter<string> = new EventEmitter<string>()
   @Output() brand_button_5: EventEmitter<string> = new EventEmitter<string>()
 
-  @Output() branItemNames: EventEmitter<string> = new EventEmitter<string>()
-
-
   btn_1_val : string;
   btn_2_val : string;
   btn_3_val : string;
   btn_4_val : string;
   btn_5_val : string;
-  options: IOption[];
+  options: SelectOption[];
 
-  branItems = [];
+  branItems: SelectOption[];
 
   brandBehavior = [
     '品牌最后浏览时间','品牌最后收藏时间','品牌最后购物车放弃时间','品牌最后加入购物车时间','品牌最后购买时间'
   ]
 
-  constructor() {
+  constructor(private gatherTargetInfoService: gatherTargetInfoService) {
     this.options = [
-      {id: 'one', name: 'one'},
-      {id: 'two', name: 'two'},
-      {id: 'three', name: 'three'}
+      {id: 1, name: 'Olay'},
+      {id: 2, name: '海飞丝'},
+      {id: 3, name: '飘柔'}
       ];
   }
-
 
   valButton_1(event: string){
     this.btn_1_val = `${event}`;
@@ -67,5 +64,9 @@ export class BrandBehaviorComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  selectedChange(){
+    this.gatherTargetInfoService.brandItems = this.branItems
+    this.gatherTargetInfoService.showBrandInfo()
+    console.log(this.gatherTargetInfoService.brandItems)
+  }
 }

@@ -1,27 +1,10 @@
 <div class='dropdown-wrap' >
 <p class="dropdown-title">品牌名称</p>
-<!--Semanic UI for Angular multi select dropdown-->
+<!--multi select dropdown-->
 <div class='dropdown'>
-<sui-multi-select [(ngModel)]="selected"
-                  placeholder="选择品牌名称"
-                  [options]="options"
-                  labelField="name"
-                  [maxSelected]="50"
-                  icon="list"
-                  #select
-                  class='multi-select-compo'>
-    <div class="ui icon search input">
-        <i class="search icon"></i>
-        <input suiSelectSearch type="text" placeholder="搜索">
-    </div>
-    <div class="divider"></div>
-    <div class="scrolling menu">
-        <sui-select-option *ngFor="let o of select.filteredOptions" [value]="o"></sui-select-option>
-    </div>
-</sui-multi-select>
+    <app-brand-dropdown-select></app-brand-dropdown-select>
 </div>
 </div>
-<p>{{branItems}}</p>
 <app-user-behavior
      [bahaviorTitle]='brandBehavior'
      (userBtn_1)="valButton_1($event)"

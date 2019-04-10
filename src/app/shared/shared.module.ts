@@ -30,7 +30,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FilterPipeComponent } from './filter-pipe/filter-pipe.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {SuiModule} from 'ng2-semantic-ui';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [FilterPipeComponent],
@@ -66,7 +66,7 @@ import {SuiModule} from 'ng2-semantic-ui';
     MatExpansionModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    SuiModule
+    MatChipsModule
 
   ],
   exports:[
@@ -100,7 +100,7 @@ import {SuiModule} from 'ng2-semantic-ui';
     MatButtonToggleModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
-    SuiModule
+    MatChipsModule
 
 
   ],

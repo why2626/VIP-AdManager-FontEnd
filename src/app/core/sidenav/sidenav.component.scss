@@ -28,3 +28,10 @@ button{
 .wrapper{
   background: rgb(44,56,71)
 }
+mat-accordion mat-expansion-panel-header .mat-expanded
+mat-expansion-panel mat-list{
+  background: rgb(44,56,71) !important;
+}
+#page-container .sh-accordion .panel .panel-collapse .panel-body{
+  background: #262626;
+}

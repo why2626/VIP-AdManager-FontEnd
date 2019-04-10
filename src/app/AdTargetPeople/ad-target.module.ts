@@ -9,6 +9,7 @@ import { GenderAgeInfoComponent } from './gender-age-info/gender-age-info.compon
 import { TargetListComponent } from './target-list/target-list.component';
 import { TargetDetailsComponent } from './target-details/target-details.component';
 import { EditTargetComponent } from './edit-target/edit-target.component';
+import { BrandDropdownSelectComponent } from './brand-dropdown-select/brand-dropdown-select.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { EditTargetComponent } from './edit-target/edit-target.component';
     TargetListComponent,
     TargetDetailsComponent,
     EditTargetComponent,
+    BrandDropdownSelectComponent
   ],
   imports: [
     SharedModule,

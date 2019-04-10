@@ -25,6 +25,8 @@ export class SidenavComponent implements OnInit {
   onmouseleave(){
     this.itemAnim='out';
   }
+  adOpen(){
 
+  }
 
 }
