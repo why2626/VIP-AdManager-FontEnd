@@ -73,7 +73,7 @@ style='cursor: pointer;'
           <p style='text-align: center' *ngIf='selectedAdId==4'>1065x183    100k</p>
           <p style='text-align: center' *ngIf='selectedAdId==5'>750x256    200k</p>
           <p style='text-align: center' *ngIf='selectedAdId==6'>720x226    400k</p>
-          <input type="file" (change)="onFileChanged($event)" style='margin-left:45px' >
+          <input type="file" name="files" id="file" (change)="onFileChanged($event)" style='margin-left:45px' >
           <button (click)="cancelFileUpload($event)" style='margin-left:100px;width:40px'>取消</button>
 
         </div>

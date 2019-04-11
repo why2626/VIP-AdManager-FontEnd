@@ -26,9 +26,14 @@ export class AdPositionListComponent implements OnInit {
   selectedAd : AdPosition
   selectedAdId : number
   url :any
+  photo
 
   constructor(private gatherAdInfoService: gatherAdInfoService) { }
-  ngOnInit() {}
+  ngOnInit() {
+    //预选第一个
+    this.selectedAdPos(ELEMENT_DATA[0])
+    this.checkChange(ELEMENT_DATA[0])
+  }
 
   displayedColumns = [ "select", "position", "picSize", "exposure", "clickRate", "clickCost" ];
   dataSource = ELEMENT_DATA;
@@ -37,16 +42,87 @@ export class AdPositionListComponent implements OnInit {
     this.selectedAd = row
     this.selectedAdId = row.id
     this.gatherAdInfoService.creatingAd.adPosition = row
-  }
-  onFileChanged(event) {
-  if (event.target.files && event.target.files[0]) {
-    var reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]); // read file as data url
-    reader.onload = (event:Event) =>{ // called once readAsDataURL is completed
-     this.url = reader.result
-     this.gatherAdInfoService.creatingAd.uploadedImage = this.url
     }
-   }
+  onFileChanged(event) {
+    var fileTypes = [".jpg", ".png",".jpeg"];
+    var filePath = event.target.value;
+    var fileSize = 0;
+    var fileMaxSize = 100; //100kb
+    //图片格式验证
+    //当括号里面的值为0、空字符、false 、null 、undefined的时候就相当于false
+    if(filePath){
+        var isNext = false;
+        var fileEnd = filePath.substring(filePath.indexOf("."));
+        for (var i = 0; i < fileTypes.length; i++) {
+            if (fileTypes[i] == fileEnd) {
+                isNext = true;
+                break;
+            }
+        }
+        if (!isNext){
+            console.log('图片格式必须为JPG、PNG或JPEG');
+            event.target.value = '';
+            return false;
+        }
+    }else {
+        return false;
+    }
+    //图片大小验证
+  if(filePath){
+    fileSize =event.target.files[0].size;  //字节为单位   1字节（byte）=1024kb
+    var size = fileSize / 1024 ;  //kb为单位
+    console.log(fileMaxSize)  //100
+    console.log(fileSize)
+    console.log(size)
+    if (size > fileMaxSize) {
+        alert("文件大小不能大于100kb");
+        event.target.value = "";
+        return false;
+    }else if (size <= 0) {
+        alert("文件大小不能为0M！");
+        event.target.value = "";
+        return false;
+    }
+}else{
+    return false;
+}
+    //图片尺寸验证
+    if(filePath){
+      //读取图片数据
+      var filePic = event.target.files[0];
+      var reader = new FileReader();
+      reader.onload = function (e) {
+          var src  = reader.result.toString();
+          //加载图片获取图片真实宽度和高度
+          var image = new Image();
+          image.onload=function(){
+
+              if (image.width == 750 && image.height == 300){
+                  console.log("文件尺寸符合！");
+              }else {
+                  console.log("文件尺寸应为：720*1280！");
+                  event.target.value = '';
+                  return false;
+              }
+          };
+          image.src= src;
+      };
+      reader.readAsDataURL(filePic);
+  }else{
+      return false;
+  }
+
+
+
+
+  //  if (event.target.files && event.target.files[0]) {
+  //    var reader = new FileReader();
+  //    reader.readAsDataURL(event.target.files[0]); // read file as data url
+  //    reader.onload = (event:Event) =>{ // called once readAsDataURL is completed
+  //     this.url = reader.result
+  //     this.gatherAdInfoService.creatingAd.uploadedImage = this.url
+  //    }
+  //   }
   }
   cancelFileUpload(event){
       this.url = ''

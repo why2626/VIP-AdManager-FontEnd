@@ -12,6 +12,8 @@ import { AlertService } from 'src/app/service/alert.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+
+    hide = true;
     registerForm: FormGroup;
     loading = false;
     submitted = false;
@@ -31,9 +33,9 @@ export class RegisterComponent implements OnInit {
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
+            companyName: ['', Validators.required],
             username: ['', Validators.required],
+            email: ['', Validators.required],
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
     }

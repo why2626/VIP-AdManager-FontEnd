@@ -1,11 +1,11 @@
 <mat-toolbar>
 <button mat-button [matMenuTriggerFor]='menu' class='showName'>
   <i class="material-icons" style='padding-bottom: 3px;margin-right: -13px'>person_outlined</i>
-  {{currentUser.lastName}} | {{currentUser.firstName}}
+  {{currentUser.username}} | {{currentUser.companyName}}
 </button>
 <mat-menu #menu='matMenu' class='dropMenu' xPosition="before">
   <button mat-menu-item><span>账户设置</span></button>
   <button mat-menu-item (click)="logout()"><span>退出账户</span></button>
 </mat-menu>
-    <button mat-raised-button color='primary' class='newAdButton' [routerLink]="['/newad']">新建广告</button>
+    <button mat-raised-button color='primary' class='newAdButton' [routerLink]="['/newAd']">新建广告</button>
   </mat-toolbar>

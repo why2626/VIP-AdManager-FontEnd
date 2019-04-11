@@ -9,19 +9,20 @@
 <mat-card>
   <mat-card-title>注册</mat-card-title>
         <mat-form-field>
-            <input matInput placeholder="公司名称" formControlName="firstName" required />
+            <input matInput placeholder="公司名称" formControlName="companyName" required />
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="用户名" formControlName="lastName" required />
+            <input matInput placeholder="用户名" formControlName="username" required />
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="邮箱" formControlName="username" required />
+            <input matInput placeholder="邮箱" formControlName="email" required />
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="密码" formControlName="password" required />
+            <input matInput placeholder="密码" formControlName='password'  [type]="hide ? 'password' : 'text'" required>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </mat-form-field>
         <mat-card-actions>
 

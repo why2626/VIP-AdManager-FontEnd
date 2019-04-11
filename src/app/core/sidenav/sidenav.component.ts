@@ -11,6 +11,9 @@ import { SideNavAnim } from '../../animation/side-nav.anim'
 })
 export class SidenavComponent implements OnInit {
 
+  collapse_ad = false
+  collapse_target = false
+
   constructor() { }
 
   ngOnInit() {

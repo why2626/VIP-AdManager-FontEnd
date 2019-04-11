@@ -18,7 +18,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -28,12 +28,12 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { FilterPipeComponent } from './filter-pipe/filter-pipe.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatChipsModule} from '@angular/material/chips';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
-  declarations: [FilterPipeComponent],
+  declarations: [],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
@@ -66,7 +66,10 @@ import {MatChipsModule} from '@angular/material/chips';
     MatExpansionModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    MatChipsModule
+    MatChipsModule,
+    DragDropModule
+
+
 
   ],
   exports:[
@@ -100,7 +103,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatButtonToggleModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
-    MatChipsModule
+    MatChipsModule,
+    DragDropModule
 
 
   ],
