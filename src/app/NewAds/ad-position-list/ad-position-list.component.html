@@ -63,29 +63,33 @@ style='cursor: pointer;'
     <p style='margin-left:-50px'>
         广告创意
       </p>
+      <div class = "upLoadAlert">
       <div>
       <div style='width:250px;height:150px;background: rgb(235, 234, 234);border: 1px dashed gray'>
-        <div style='display: flex;flex-direction: column;align-content: center' >
-          <p style='text-align: center'>上传图片</p>
-          <p style='text-align: center' *ngIf='selectedAdId==1'>750x300    100k</p>
-          <p style='text-align: center' *ngIf='selectedAdId==2'>750x156    100k</p>
-          <p style='text-align: center' *ngIf='selectedAdId==3'>720x226    100k</p>
-          <p style='text-align: center' *ngIf='selectedAdId==4'>1065x183    100k</p>
-          <p style='text-align: center' *ngIf='selectedAdId==5'>750x256    200k</p>
-          <p style='text-align: center' *ngIf='selectedAdId==6'>720x226    400k</p>
-          <input type="file" name="files" id="file" (change)="onFileChanged($event)" style='margin-left:45px' >
-          <button (click)="cancelFileUpload($event)" style='margin-left:100px;width:40px'>取消</button>
+        <div style='display: flex;flex-direction: column;align-items: center;justify-content: center' >
+          <p class='upload-text'>上传图片</p>
+          <p class='upload-text' *ngIf='selectedAdId==1'>750x300    100k</p>
+          <p class='upload-text' *ngIf='selectedAdId==2'>750x156    100k</p>
+          <p class='upload-text' *ngIf='selectedAdId==3'>720x226    100k</p>
+          <p class='upload-text' *ngIf='selectedAdId==4'>1065x183    400k</p>
+          <p class='upload-text' *ngIf='selectedAdId==5'>750x256    200k</p>
+          <p class='upload-text' *ngIf='selectedAdId==6'>720x226    100k</p>
+          <input type="file" name="file" id="file" mat-button accept=".jpg, .jpeg, .png" required (change)="onFileChanged($event,selectedAdId)" style='margin-left:45px' >
+          <button mat-stroked-button (click)="cancelFileUpload()" style='margin-top:10px;'>取消</button>
 
         </div>
       </div>
       </div>
+      <div class='alertMessage' *ngIf="isAlert()">
+              <div><i class="material-icons">report_problem</i></div>
+              <div>{{alertMessage}}</div>
+      </div>
+    </div>
 </div>
 
   </div>
 <div class='phoneArea' style='position: relative;'>
   <div class='phone' style='background-image: url(/assets/img/phone.png);background-size: cover' >
-
-
 
     <img *ngIf='selectedAdId==1' class='adImg' src='/assets/img/首页焦点第三四帧.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;z-index: 1;'>
     <img *ngIf='selectedAdId==2' class='adImg' src='/assets/img/收藏顶部及物流页底部横幅.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
@@ -94,18 +98,14 @@ style='cursor: pointer;'
     <img *ngIf='selectedAdId==5' class='adImg' src='/assets/img/美妆焦点第二帧.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
     <img *ngIf='selectedAdId==6' class='adImg' src='/assets/img/美妆频道精彩活动运营位.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
 
-
+    </div>
+    <img [src]='picSrc' *ngIf='selectedAdId==1' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-365px;position: absolute;'>
+    <img [src]='picSrc' *ngIf='selectedAdId==2' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-385px;position: absolute;'>
+    <img [src]='picSrc' *ngIf='selectedAdId==3' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-420px;position: absolute;'>
+    <img [src]='picSrc' *ngIf='selectedAdId==4' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-420px;position: absolute;'>
+    <img [src]='picSrc' *ngIf='selectedAdId==5' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-400px;position: absolute;'>
+    <img [src]='picSrc' *ngIf='selectedAdId==6' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-230px;position: absolute;'>
 
     </div>
-    <img [src]='url' *ngIf='selectedAdId==1' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-365px;position: absolute;'>
-
-    </div>
-
-
-
-
 </div>
 
-<div>
-
-</div>

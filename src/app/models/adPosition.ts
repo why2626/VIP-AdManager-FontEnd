@@ -5,5 +5,6 @@ export class AdPosition {
   exposure: string;
   clickRate: string;
   clickCost: number;
+  isSelected: boolean;
 }
 

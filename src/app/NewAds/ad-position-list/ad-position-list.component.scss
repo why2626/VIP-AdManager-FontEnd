@@ -38,3 +38,27 @@ mat-table{
   width:255px;
   height: 504px
 }
+.upload-text{
+  margin: 10px 0px;
+}
+.upLoadAlert{
+  display: flex;
+  flex-direction: row;
+}
+.alertMessage{
+
+  height: 25px;
+  font-size: 80%;
+  border: 1px solid rgb(139, 75, 75);
+  margin-left: 40px;
+  padding: 10px 13px;
+  background: rgb(243, 201, 112);
+  color:rgb(75, 74, 74);
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
