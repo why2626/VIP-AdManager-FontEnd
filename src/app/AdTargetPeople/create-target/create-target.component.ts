@@ -43,6 +43,7 @@ export class CreateTargetComponent implements OnInit {
   userId: any;
 
   user: User
+  peopleEstimate: number = 0
 
   targetName = new FormControl('',[Validators.required]);
 
@@ -51,7 +52,8 @@ export class CreateTargetComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private gatherTargetInfoService: gatherTargetInfoService){
-      this.gatherTargetInfoService.listen().subscribe( () => {                this.showCategroInfo()
+      this.gatherTargetInfoService.listen().subscribe( () => {
+           this.showCategroInfo()
       })
       this.gatherTargetInfoService.brandListen().subscribe( () => {
            this.showBrandInfo()
@@ -86,6 +88,7 @@ export class CreateTargetComponent implements OnInit {
       categBtn_3: [null],
       categBtn_4: [null],
       categBtn_5: [null],
+      peopleEstimate: [null],
       userId: [null, Validators.required]
     });
   }
@@ -111,78 +114,85 @@ export class CreateTargetComponent implements OnInit {
     }
 //-----展示用户行为------
     valUserBtn_1(event: string){
-      this.userBtn_1 = `${event}`;
-      this.targetForm.controls['userBtn_1'].patchValue(this.userBtn_1);
+      this.userBtn_1 = `${event}`
+      this.targetForm.controls['userBtn_1'].patchValue(this.userBtn_1)
       console.log(this.userBtn_1)
    }
    valUserBtn_2(event: string){
-      this.userBtn_2 = `${event}`;
-      this.targetForm.controls['userBtn_2'].patchValue(this.userBtn_2);
+      this.userBtn_2 = `${event}`
+      this.targetForm.controls['userBtn_2'].patchValue(this.userBtn_2)
    }
    valUserBtn_3(event: string){
-      this.userBtn_3 = `${event}`;
-      this.targetForm.controls['userBtn_3'].patchValue(this.userBtn_3);
+      this.userBtn_3 = `${event}`
+      this.targetForm.controls['userBtn_3'].patchValue(this.userBtn_3)
    }
    valUserBtn_4(event: string){
-      this.userBtn_4 = `${event}`;
-      this.targetForm.controls['userBtn_4'].patchValue(this.userBtn_4);
+      this.userBtn_4 = `${event}`
+      this.targetForm.controls['userBtn_4'].patchValue(this.userBtn_4)
    }
    valUserBtn_5(event: string){
-      this.userBtn_5 = `${event}`;
-      this.targetForm.controls['userBtn_5'].patchValue(this.userBtn_5);
+      this.userBtn_5 = `${event}`
+      this.targetForm.controls['userBtn_5'].patchValue(this.userBtn_5)
 
    }
 //-----展示品牌行为------
     showBrandBtn_1(event: string){
-      this.branBtn_1 = `${event}`;
-      this.targetForm.controls['branBtn_1'].patchValue(this.branBtn_1);
+      this.branBtn_1 = `${event}`
+      this.targetForm.controls['branBtn_1'].patchValue(this.branBtn_1)
    }
     showBrandBtn_2(event: string){
-      this.branBtn_2 = `${event}`;
-      this.targetForm.controls['branBtn_2'].patchValue(this.branBtn_2);
+      this.branBtn_2 = `${event}`
+      this.targetForm.controls['branBtn_2'].patchValue(this.branBtn_2)
    }
     showBrandBtn_3(event: string){
-      this.branBtn_3 = `${event}`;
-      this.targetForm.controls['branBtn_3'].patchValue(this.branBtn_3);
+      this.branBtn_3 = `${event}`
+      this.targetForm.controls['branBtn_3'].patchValue(this.branBtn_3)
    }
     showBrandBtn_4(event: string){
-      this.branBtn_4 = `${event}`;
-      this.targetForm.controls['branBtn_4'].patchValue(this.branBtn_4);
+      this.branBtn_4 = `${event}`
+      this.targetForm.controls['branBtn_4'].patchValue(this.branBtn_4)
    }
     showBrandBtn_5(event: string){
-      this.branBtn_5 = `${event}`;
-      this.targetForm.controls['branBtn_5'].patchValue(this.branBtn_5);
+      this.branBtn_5 = `${event}`
+      this.targetForm.controls['branBtn_5'].patchValue(this.branBtn_5)
    }
 //-----展示类品行为------
     showCategoryBtn_1(event: string){
-      this.categBtn_1 = `${event}`;
-      this.targetForm.controls['categBtn_1'].patchValue(this.categBtn_1);
+      this.categBtn_1 = `${event}`
+      this.targetForm.controls['categBtn_1'].patchValue(this.categBtn_1)
    }
     showCategoryBtn_2(event: string){
-      this.categBtn_2 = `${event}`;
-      this.targetForm.controls['categBtn_2'].patchValue(this.categBtn_2);
+      this.categBtn_2 = `${event}`
+      this.targetForm.controls['categBtn_2'].patchValue(this.categBtn_2)
    }
     showCategoryBtn_3(event: string){
-      this.categBtn_3 = `${event}`;
-      this.targetForm.controls['categBtn_3'].patchValue(this.categBtn_3);
+      this.categBtn_3 = `${event}`
+      this.targetForm.controls['categBtn_3'].patchValue(this.categBtn_3)
    }
     showCategoryBtn_4(event: string){
-      this.categBtn_4 = `${event}`;
-      this.targetForm.controls['categBtn_4'].patchValue(this.categBtn_4);
+      this.categBtn_4 = `${event}`
+      this.targetForm.controls['categBtn_4'].patchValue(this.categBtn_4)
    }
     showCategoryBtn_5(event: string){
-      this.categBtn_5 = `${event}`;
-      this.targetForm.controls['categBtn_5'].patchValue(this.categBtn_5);
+      this.categBtn_5 = `${event}`
+      this.targetForm.controls['categBtn_5'].patchValue(this.categBtn_5)
+   }
+    RandomNum(min, max) {
+    return Math.floor(Math.random() * (max - min)) === min  ? (min + 1) : Math.floor(Math.random() * (max - min)) + min
    }
 
+    estimatePeopel(){
+      this.peopleEstimate = this.RandomNum(20000, 100000)
+      this.targetForm.controls['peopleEstimate'].patchValue(this.peopleEstimate)
+   }
 
     onFormSubmit(form:NgForm) {
       this.targetService.addTarget(form)
           .subscribe(res => {
-         this.router.navigate(['/targets']);
+         this.router.navigate(['/targets'])
           }, (err) => {
-          console.log(err);
-         });
+          console.log(err)
+         })
 
       }
 }

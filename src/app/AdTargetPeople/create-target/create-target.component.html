@@ -12,32 +12,36 @@
 <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag>
       <h3>已选</h3>
       <p>APP平台：{{selectedPlatform}}</p>
-      <p>{{genderSelectedItems}}</p>
-      <p>{{ageSelectedItems}}</p>
+      <p *ngIf = "genderSelectedItems">性别： {{genderSelectedItems}}</p>
+      <p *ngIf = "ageSelectedItems">年龄： {{ageSelectedItems}}</p>
 
-      <p>{{userBtn_1}}</p>
-      <p>{{userBtn_2}}</p>
-      <p>{{userBtn_3}}</p>
-      <p>{{userBtn_4}}</p>
-      <p>{{userBtn_5}}</p>
+      <p *ngIf = "userBtn_1">最后浏览时间： {{userBtn_1}}</p>
+      <p *ngIf = "userBtn_2">最后收藏时间： {{userBtn_2}}</p>
+      <p *ngIf = "userBtn_3">最后购物车放弃时间： {{userBtn_3}}</p>
+      <p *ngIf = "userBtn_4">最后最后加入购物车时间： {{userBtn_4}}</p>
+      <p *ngIf = "userBtn_5">最后购买时间： {{userBtn_5}}</p>
 
       <p *ngIf='categroItems'>一二级品类：</p>
       <p *ngFor="let item of categroItems" style='margin-left:40px'>{{item}}</p>
 
-      <p>{{categBtn_1}}</p>
-      <p>{{categBtn_2}}</p>
-      <p>{{categBtn_3}}</p>
-      <p>{{categBtn_4}}</p>
-      <p>{{categBtn_5}}</p>
+      <p *ngIf = "categBtn_1">品类最后浏览时间：{{categBtn_1}}</p>
+      <p *ngIf = "categBtn_2">品类最后收藏时间：{{categBtn_2}}</p>
+      <p *ngIf = "categBtn_3">品类最后购物车放弃时间：{{categBtn_3}}</p>
+      <p *ngIf = "categBtn_4">品类最后加入购物车时间：{{categBtn_4}}</p>
+      <p *ngIf = "categBtn_5">品类最后购买时间：{{categBtn_5}}</p>
 
       <p *ngIf='brandItems'>品牌名称：</p>
-      <p *ngFor="let item of brandItems" style='margin-left:40px'>{{item.name}}</p>
+      <p *ngFor="let item of brandItems" style='margin-left:40px'>{{item}}</p>
 
-      <p>{{branBtn_1}}</p>
-      <p>{{branBtn_2}}</p>
-      <p>{{branBtn_3}}</p>
-      <p>{{branBtn_4}}</p>
-      <p>{{branBtn_5}}</p>
+      <p *ngIf = "branBtn_1">品牌最后浏览时间：{{branBtn_1}}</p>
+      <p *ngIf = "branBtn_2">品牌最后收藏时间：{{branBtn_2}}</p>
+      <p *ngIf = "branBtn_3">品牌最后购物车放弃时间：{{branBtn_3}}</p>
+      <p *ngIf = "branBtn_4">品牌最后加入购物车时间：{{branBtn_4}}</p>
+      <p *ngIf = "branBtn_5">品牌最后购买时间：{{branBtn_5}}</p>
+      <div class="people-Estimate">
+      <button mat-stroked-button (click)="estimatePeopel()" color='primary'>预估覆盖人群</button>
+      <p *ngIf = "peopleEstimate">{{peopleEstimate}} 人</p>
+     </div>
 </div>
 </div>
 

@@ -3,13 +3,14 @@ import { SharedModule } from '../shared/shared.module';
 import { Step1Component } from './step1/step1.component';
 import { NewadsRoutingModule } from './newads-routing.module'
 import { CreateAdComponent } from './create-ad/create-ad.component';
-import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { Step2Component } from './step2/step2.component';
 import { AdPositionListComponent } from './ad-position-list/ad-position-list.component';
 import { Step3Component } from './step3/step3.component';
 import { Step4Component } from './step4/step4.component';
 import { AdListComponent } from './ad-list/ad-list.component';
+import { AdDetailsComponent } from './ad-details/ad-details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AdListComponent } from './ad-list/ad-list.component';
     Step3Component,
     Step4Component,
     AdPositionListComponent,
-    AdListComponent
+    AdListComponent,
+    AdDetailsComponent,
 
   ],
 

@@ -75,7 +75,7 @@ export class UserBehaviorComponent implements OnInit {
           this.buttons_1[i].selected = false;
         }
        }
-       this.selectedButton_1 = this.bahaviorTitle[0] +'：' + this.buttons_1[j]['name']
+       this.selectedButton_1 = this.buttons_1[j]['name']
        if(!this.buttons_1[j].selected)
        {this.selectedButton_1=''}
        this.userBtn_1.emit(this.selectedButton_1);
@@ -87,7 +87,7 @@ export class UserBehaviorComponent implements OnInit {
             this.buttons_2[i].selected = false;
           }
          }
-         this.selectedButton_2 = this.bahaviorTitle[1] +'：' + this.buttons_2[j]['name']
+         this.selectedButton_2 = this.buttons_2[j]['name']
          if(!this.buttons_2[j].selected)
          {this.selectedButton_2=''}
          this.userBtn_2.emit(this.selectedButton_2);
@@ -99,7 +99,7 @@ export class UserBehaviorComponent implements OnInit {
               this.buttons_3[i].selected = false;
             }
            }
-           this.selectedButton_3 = this.bahaviorTitle[2] +'：' + this.buttons_3[j]['name']
+           this.selectedButton_3 = this.buttons_3[j]['name']
            if(!this.buttons_3[j].selected)
            {this.selectedButton_3=''}
            this.userBtn_3.emit(this.selectedButton_3);
@@ -111,7 +111,7 @@ export class UserBehaviorComponent implements OnInit {
                 this.buttons_4[i].selected = false;
               }
              }
-             this.selectedButton_4 = this.bahaviorTitle[3] +'：' + this.buttons_4[j]['name']
+             this.selectedButton_4 = this.buttons_4[j]['name']
              if(!this.buttons_4[j].selected)
              {this.selectedButton_4=''}
              this.userBtn_4.emit(this.selectedButton_4);
@@ -123,7 +123,7 @@ export class UserBehaviorComponent implements OnInit {
                   this.buttons_5[i].selected = false;
                 }
                }
-               this.selectedButton_5 = this.bahaviorTitle[4] +'：' + this.buttons_5[j]['name']
+               this.selectedButton_5 = this.buttons_5[j]['name']
                if(!this.buttons_5[j].selected)
                {this.selectedButton_5=''}
                this.userBtn_5.emit(this.selectedButton_5);

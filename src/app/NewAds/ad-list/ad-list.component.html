@@ -37,7 +37,7 @@
         <!-- 操作 Column -->
         <ng-container matColumnDef="operation">
             <mat-header-cell *matHeaderCellDef>操作</mat-header-cell>
-            <mat-cell *matCellDef="let row"><button mat-button (click)="deleteTarget(row._id)" style='padding:0'><mat-icon>delete</mat-icon></button></mat-cell>
+            <mat-cell *matCellDef="let row"><a [routerLink]="['/adList']" style = "text-decoration: none;color: black"><button mat-button (click)="deleteAd(row._id)" style='padding:0'><mat-icon>delete</mat-icon></button></a></mat-cell>
         </ng-container>
 
         <!-- 花费 Column -->
@@ -75,7 +75,7 @@
 
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/target-details/', row._id]" style='cursor: pointer;'></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/adDetails/', row._id]" style='cursor: pointer;'></mat-row>
       </mat-table>
     </div>
    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons #paginator></mat-paginator>-->

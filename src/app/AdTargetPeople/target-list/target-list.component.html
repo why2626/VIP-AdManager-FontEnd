@@ -37,7 +37,7 @@
         <!-- 操作 Column -->
         <ng-container matColumnDef="operation">
             <mat-header-cell *matHeaderCellDef>操作</mat-header-cell>
-            <mat-cell *matCellDef="let row"><button mat-button (click)="deleteTarget(row._id)" style='padding:0'><mat-icon>delete</mat-icon></button></mat-cell>
+            <mat-cell *matCellDef="let row"><a [routerLink]="['/targets']" style="text-decoration: none; color:black" ><button mat-button (click)="deleteTarget(row._id)" style='padding:0' (click)="$event.stopPropagation()" ><mat-icon>delete</mat-icon></button></a></mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

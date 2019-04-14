@@ -29,12 +29,12 @@ export class AdListComponent implements OnInit {
     });
    // this.dataSource.paginator = this.paginator;
   }
-  deleteTarget(_id) {
+  deleteAd(_id) {
     this.isLoadingResults = true;
     this.adService.deleteAd(_id)
       .subscribe(res => {
           this.isLoadingResults = false;
-          this.router.navigate(['/targets']);
+          this.router.navigate(['/adList']);
         }, (err) => {
           console.log(err);
           this.isLoadingResults = false;

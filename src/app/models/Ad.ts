@@ -24,4 +24,5 @@ export class Ad{
   exposure?: number //曝光量
   clickCount? : number //点击量
   createTime: Date;
+  userId: string;
 }

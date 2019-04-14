@@ -53,14 +53,12 @@ getSelectedItems(){
    if(this.ageButtons[i].selected){
      this.ageSelectedItems.push(this.ageButtons[i]['name'])
    }}
-  if(this.ageSelectedItems.length>0){this.ageSelectedItems.unshift('年龄：')}
-  this.ageChange.emit(this.ageSelectedItems.join('  '))
+   this.ageChange.emit(this.ageSelectedItems.join('  '))
 
-   for(let i = 0; i<this.genderButtons.length; i++){
+    for(let i = 0; i<this.genderButtons.length; i++){
     if(this.genderButtons[i].selected){
       this.genderSelectedItems.push(this.genderButtons[i]['name'])
     }}
-    if(this.genderSelectedItems.length>0){this.genderSelectedItems.unshift('性别：')}
     this.genderChange.emit(this.genderSelectedItems.join('  '))
   }
 
