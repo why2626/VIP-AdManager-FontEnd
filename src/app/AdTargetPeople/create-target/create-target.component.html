@@ -38,9 +38,11 @@
       <p *ngIf = "branBtn_3">品牌最后购物车放弃时间：{{branBtn_3}}</p>
       <p *ngIf = "branBtn_4">品牌最后加入购物车时间：{{branBtn_4}}</p>
       <p *ngIf = "branBtn_5">品牌最后购买时间：{{branBtn_5}}</p>
+      <p class='people-header'>预计人群覆盖用户</p>
       <div class="people-Estimate">
-      <button mat-stroked-button (click)="estimatePeopel()" color='primary'>预估覆盖人群</button>
-      <p *ngIf = "peopleEstimate">{{peopleEstimate}} 人</p>
+
+      <p>{{peopleEstimate}} 人</p>
+      <button mat-stroked-button (click)="estimatePeopel()" color='primary'>开始预估</button>
      </div>
 </div>
 </div>

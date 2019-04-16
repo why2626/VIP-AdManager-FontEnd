@@ -18,11 +18,11 @@ ad : Ad = {
   startDate: null, //投放开始日期
   endDate: null, //投放结束日期
   vipAPP: '', //投放站点
-  adPosition: new AdPosition, //资源位
+  adPosition: null, //资源位
   uploadedImage: '', //图片
   linkType: '', //落地页类型
   linkID: '', //落地页链接
-  targets: new Target[0], //人群包
+  targets: null, //人群包
   divices: '', //设备系统
   pricingType: '', //出价方式
   compativeType: '', //竞价方式
@@ -36,38 +36,43 @@ ad : Ad = {
   createTime: null,
   userId:'',
 }
-  isLoadingResults = true;
+  isLoadingResults = true
+  selectedAdId: number
 
   constructor(private route: ActivatedRoute, private AdService: AdService, private router: Router) { }
 
   ngOnInit() {
         //Call that function when the component is initiated.
-        this.getAdDetails(this.route.snapshot.params['id']);
+       this.getAdDetails(this.route.snapshot.params['id']);
   }
   getAdDetails(_id) {
     this.AdService.getAd(_id)
       .subscribe(res => {
-        this.ad = res;
-
-        console.log(this.ad);
-        this.isLoadingResults = false;
+        this.ad = res
+        this.selectedAdId = this.ad.adPosition[0].id
+        console.log(this.ad.adPosition)
+        console.log(this.selectedAdId)
+        this.isLoadingResults = false
       }, err => {
-        console.log(err);
-        this.isLoadingResults = false;
+        console.log(err)
+        this.isLoadingResults = false
       });
   }
   deleteAd(_id) {
-    this.isLoadingResults = true;
+    this.isLoadingResults = true
     this.AdService.deleteAd(_id)
       .subscribe(res => {
-          this.isLoadingResults = false;
-          this.router.navigate(['/adList']);
+          this.isLoadingResults = false
+          this.router.navigate(['/adList'])
         }, (err) => {
-          console.log(err);
-          this.isLoadingResults = false;
+          console.log(err)
+          this.isLoadingResults = false
         }
       );
   }
-
+  goBack(){
+    this.isLoadingResults = true
+    history.back()
+  }
 
 }

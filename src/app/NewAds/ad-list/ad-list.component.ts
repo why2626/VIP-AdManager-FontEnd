@@ -10,7 +10,7 @@ import { AdService } from 'src/app/service';
 })
 export class AdListComponent implements OnInit {
 
-  displayedColumns: string[] = ['adName', 'adPrice', 'turnedOn', 'status', 'operation','spentMoney','exposure','clickCount','clickRate','compativeType','createTime'];
+  displayedColumns: string[] = ['adName', 'adPrice', 'turnedOn', 'status','spentMoney','exposure','clickCount','clickRate','compativeType','createTime', 'operation'];
   AdDataList: Ad[] = [];
   isLoadingResults = true;
   //dataSource = new MatTableDataSource<Target>(this.data);
@@ -23,6 +23,7 @@ export class AdListComponent implements OnInit {
     .subscribe(res => {
       this.AdDataList = res;
       this.isLoadingResults = false;
+      console.log(this.AdDataList)
     }, err => {
       console.log(err);
       this.isLoadingResults = false;

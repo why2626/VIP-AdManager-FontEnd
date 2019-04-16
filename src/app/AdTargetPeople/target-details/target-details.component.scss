@@ -6,13 +6,10 @@
   margin-bottom: 20px;
 }
 
-.example-loading-shade {
-  position: absolute;
-  z-index: 999;
-  display: flex;
-  justify-self: center;
-  margin-left:100px;
-  margin-top:15px;
+.loading-shade {
+  display:table;
+  margin:0 auto;
+  padding-top:60px;
 }
 
 .mat-raised-button,

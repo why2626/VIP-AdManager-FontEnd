@@ -1,13 +1,11 @@
-.stepButtom{
-  display: flex;
-  justify-content: center;
-  margin-top:30px
-}
-.nextBottom{
-  margin-left:20px
+.loading-shade {
+  display:table;
+  margin:0 auto;
+  padding-top:60px;
 }
 p{
-  color:rgb(104, 102, 102)
+  color:rgb(104, 102, 102);
+  width: 100%;
 }
 span{
   color:black;
@@ -19,16 +17,14 @@ span{
 .targetWrap{
   display: flex;
   flex-direction: row;
-  height: 100%
 }
 .showInfoWrap{
   display: flex;
   flex-direction: row;
-
 }
 .phoneArea{
   width:255px;
-  margin-left: 300px;
+  margin-left: 100px;
   margin-top: 50px;
   display: block;
   height:504px;
@@ -36,4 +32,21 @@ span{
 .phone{
   width:255px;
   height: 504px
+}
+.info{
+  margin-left: 40px;
+}
+.wrapper{
+  background: white;
+  margin:20px;
+  padding: 30px;
+  overflow: auto
+}
+.button-area{
+  padding: 30px 5px 0px 0px;
+  display: flex;
+  justify-content: center;
+}
+.delete-button{
+  margin-left: 20px;
 }

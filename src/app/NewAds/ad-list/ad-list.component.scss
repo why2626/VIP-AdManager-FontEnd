@@ -3,6 +3,7 @@
   background: none;
   height:100%;
   width:100%;
+  overflow-x: hidden;
 }
 .button-row{
   margin-top:25px;
@@ -16,25 +17,14 @@
   max-height: 400px;
   overflow: auto;
 }
-
 mat-table {
   width: 100%;
 }
-
 .loading-shade {
-  position: absolute;
-  z-index: 999;
-  display: flex;
-  justify-self: center;
-  margin-left:100px;
-  margin-top:15px;
+  display:table;
+  margin:0 auto;
+  padding-top:60px;
 }
-
-mat-spinner{
-  width:20px;
-  height:20px;
-}
-
 .example-rate-limit-reached {
   color: #980000;
   max-width: 360px;
@@ -42,40 +32,49 @@ mat-spinner{
 }
 
 /* Column Widths */
-.mat-column-number,
-.mat-column-state {
-  max-width: 64px;
+.mat-column-adName{
+  flex: 0 0 25%;
+  display: flex;
+  justify-content: center;
+}
+.mat-column-price,
+.mat-column-spentMoney,
+.mat-column-exposure,
+.mat-column-clickCount,
+.mat-column-clickRate{
+  //max-width: 6%;
+  flex: 0 0 6%;
+  display: flex;
+  justify-content: center;
 }
 
-.mat-column-created {
-  max-width: 124px;
-}
-
-.mat-flat-button {
-  margin: 5px;
-  font-weight: 300;
+.mat-column-turnedOn {
+  //max-width: 10%;
+  flex: 0 0 10%;
+  display: flex;
+  justify-content: center;
 }
 .listContent{
   margin-top:10px;
   margin:20px;
 }
 .mat-column-operation{
-  flex: 0 0 80px;
+  flex: 0 0 7%;
   display: flex;
   justify-content: center;
 }
 .mat-column-createTime{
-  flex: 0 0 100px;
+  flex: 0 0 9%;
   display: flex;
   justify-content: center;
 }
-.mat-column-peopleEstimate{
-  flex: 0 0 130px;
+.mat-column-status{
+  flex: 0 0 8%;
   display: flex;
   justify-content: center;
 }
-.mat-column-platform{
-  flex: 0 0 80px;
+.mat-column-compativeType{
+  flex: 0 0 15%;
   display: flex;
   justify-content: center;
 }

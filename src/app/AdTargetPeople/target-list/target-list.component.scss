@@ -16,41 +16,27 @@
   max-height: 400px;
   overflow: auto;
 }
-
 mat-table {
   width: 100%;
 }
-
 .loading-shade {
-  position: absolute;
-  z-index: 999;
-  display: flex;
-  justify-self: center;
-  margin-left:100px;
-  margin-top:15px;
+  display:table;
+  margin:0 auto;
+  padding-top:60px;
 }
-
-mat-spinner{
-  width:20px;
-  height:20px;
-}
-
 .example-rate-limit-reached {
   color: #980000;
   max-width: 360px;
   text-align: center;
 }
-
 /* Column Widths */
 .mat-column-number,
 .mat-column-state {
   max-width: 64px;
 }
-
 .mat-column-created {
   max-width: 124px;
 }
-
 .mat-flat-button {
   margin: 5px;
   font-weight: 300;

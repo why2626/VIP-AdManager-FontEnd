@@ -1,12 +1,11 @@
 <div class="container">
-    <div class="loading-shade"
-         *ngIf="isLoadingResults">
-      <mat-spinner *ngIf="isLoadingResults" [diameter]="20"></mat-spinner>
-    </div>
-    <div class="button-row">
+  <div class="loading-shade" *ngIf="isLoadingResults">
+     <mat-spinner [diameter]="50"></mat-spinner>
+  </div>
+    <div class="button-row" *ngIf="!isLoadingResults">
       <button mat-raised-button color="primary" [routerLink]="['/newAd']">新建</button>
     </div>
-    <div class="mat-elevation-z8 listContent">
+    <div class="mat-elevation-z8 listContent" *ngIf="!isLoadingResults">
       <mat-table [dataSource]="AdDataList" class="table"
              matSort matSortActive="TargetNname" matSortDisableClear matSortDirection="asc">
 
@@ -25,19 +24,13 @@
         <!-- 开关 Column -->
         <ng-container matColumnDef="turnedOn">
           <mat-header-cell *matHeaderCellDef>开关</mat-header-cell>
-          <mat-cell *matCellDef="let row"></mat-cell>
+          <mat-cell *matCellDef="let row"><mat-slide-toggle (click)="$event.stopPropagation()" ></mat-slide-toggle></mat-cell>
         </ng-container>
 
         <!-- 状态 Column -->
         <ng-container matColumnDef="status">
           <mat-header-cell *matHeaderCellDef>状态</mat-header-cell>
           <mat-cell *matCellDef="let row">{{row.status}}</mat-cell>
-        </ng-container>
-
-        <!-- 操作 Column -->
-        <ng-container matColumnDef="operation">
-            <mat-header-cell *matHeaderCellDef>操作</mat-header-cell>
-            <mat-cell *matCellDef="let row"><a [routerLink]="['/adList']" style = "text-decoration: none;color: black"><button mat-button (click)="deleteAd(row._id)" style='padding:0'><mat-icon>delete</mat-icon></button></a></mat-cell>
         </ng-container>
 
         <!-- 花费 Column -->
@@ -73,6 +66,11 @@
             <mat-cell *matCellDef="let row">{{row.createTime | date:'yyyy-MM-dd'}}</mat-cell>
         </ng-container>
 
+        <!-- 操作 Column -->
+        <ng-container matColumnDef="operation">
+            <mat-header-cell *matHeaderCellDef>操作</mat-header-cell>
+            <mat-cell *matCellDef="let row"><a [routerLink]="['/adList']" style = "text-decoration: none;color: black"><button mat-button (click)="deleteAd(row._id)" style='padding:0' (click)="$event.stopPropagation()"><mat-icon>delete</mat-icon></button></a></mat-cell>
+        </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/adDetails/', row._id]" style='cursor: pointer;'></mat-row>

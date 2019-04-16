@@ -84,11 +84,16 @@
 .people-Estimate{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 .people-Estimate p{
   margin-left: 25px;
 }
 .people-Estimate button{
   font-size: 75%;
-  color:rgb(29, 116, 68)
+  color:rgb(29, 116, 68);
+}
+.people-header{
+  padding-top:20px;
+  font-size: 95%;
 }
