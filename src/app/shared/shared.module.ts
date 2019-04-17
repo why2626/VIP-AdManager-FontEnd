@@ -31,6 +31,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatChipsModule} from '@angular/material/chips';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {NgxEchartsModule} from 'ngx-echarts'
 
 @NgModule({
   declarations: [],
@@ -67,7 +68,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatChipsModule,
-    DragDropModule
+    DragDropModule,
+    NgxEchartsModule,
 
 
 
@@ -104,7 +106,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatExpansionModule,
     MatProgressSpinnerModule,
     MatChipsModule,
-    DragDropModule
+    DragDropModule,
+    NgxEchartsModule,
 
 
   ],
