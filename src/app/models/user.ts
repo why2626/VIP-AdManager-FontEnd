@@ -4,5 +4,6 @@ export class User {
   password: string;
   companyName: string;
   username: string;
+  balance: number; //账户余额
   token: string;
 }

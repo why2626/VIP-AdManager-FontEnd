@@ -1,5 +1,5 @@
 <div class="showInfoWrap">
-<div style='margin-left: 40px'>
+<div class='text-info'>
 <h3 style='color:black;padding-bottom: 20px'>确认信息</h3>
 <p> 广告名称：   <span>{{ adName }}</span></p>
 <p *ngIf = '!isEndDateSet'> 投放日期：  <span>{{ startDate | date:'yyyy-MM-dd'}} - {{ endDate | date:'yyyy-MM-dd'}} </span></p>
@@ -10,7 +10,6 @@
 <p> 设备系统：    <span>{{ device }}</span></p>
 <p> 出价方式：    <span>{{ pricingType }}</span></p>
 <p> 竞价方式：    <span>{{ compativeType }}</span></p>
-<p> 广告出价：    <span>{{ adPrice }} 元/次点击</span></p>
 <p> 广告出价：    <span>{{ adPrice }} 元/次点击</span></p>
 <p> 日限额：      <span>{{ dayLimit }} 元</span></p>
 <div class='targetWrap'>

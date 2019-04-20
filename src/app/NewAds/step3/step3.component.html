@@ -124,11 +124,12 @@
           <mat-radio-button value="保量交易(PDB)" style='margin-left:40px'>保量交易(PDB)</mat-radio-button>
       </mat-radio-group>
   </div>
+  <form [formGroup]='stepThreeForm'>
 <div class='detial-p'>
   <p>广告出价</p>
 </div>
 <mat-form-field>
-    <input matInput placeholder="请输入广告出价" [formControl]="adPrice" required="">
+    <input matInput placeholder="请输入广告出价" formControlName="adPrice" required="">
     <mat-hint align="start">建议出价高于0.5元</mat-hint>
     <span matSuffix style='color:black'>元/次点击</span>
 </mat-form-field>
@@ -136,9 +137,10 @@
     <p>日限额</p>
 </div>
   <mat-form-field>
-      <input matInput placeholder="请输入日限额" [formControl]="dayLimit" required="">
+      <input matInput placeholder="请输入日限额" formControlName="dayLimit" required="">
       <span matSuffix style='color:black'>元/天</span>
   </mat-form-field>
+</form>
 </div>
 <div class='stepButtom'>
     <button mat-raised-button matStepperPrevious>上一步</button>

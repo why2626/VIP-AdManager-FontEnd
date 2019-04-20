@@ -36,7 +36,7 @@
         <!-- 花费 Column -->
         <ng-container matColumnDef="spentMoney">
             <mat-header-cell *matHeaderCellDef>花费</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.spentMoney}}</mat-cell>
+            <mat-cell *matCellDef="let row">{{row.clickCount*row.adPrice}}</mat-cell>
         </ng-container>
 
         <!-- 曝光量 Column -->
@@ -53,7 +53,7 @@
         <!-- 点击率 Column -->
         <ng-container matColumnDef="clickRate">
             <mat-header-cell *matHeaderCellDef>点击率</mat-header-cell>
-            <mat-cell *matCellDef="let row"></mat-cell>
+            <mat-cell *matCellDef="let row">{{row.clickRate}}</mat-cell>
         </ng-container>
         <!-- 竞价方式 Column -->
         <ng-container matColumnDef="compativeType">

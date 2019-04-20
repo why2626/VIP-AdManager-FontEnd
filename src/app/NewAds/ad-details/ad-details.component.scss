@@ -24,7 +24,6 @@ span{
 }
 .phoneArea{
   width:255px;
-  margin-left: 100px;
   margin-top: 50px;
   display: block;
   height:504px;
@@ -35,6 +34,7 @@ span{
 }
 .info{
   margin-left: 40px;
+  min-width: 600px;
 }
 .wrapper{
   background: white;
@@ -44,9 +44,30 @@ span{
 }
 .button-area{
   padding: 30px 5px 0px 0px;
-  display: flex;
-  justify-content: center;
+  margin-bottom: 40px;
+  margin-left: 90px;
 }
 .delete-button{
   margin-left: 20px;
+}
+.tab{
+  margin:0px 30px 30px 30px;
+  background: white;
+}
+.chart{
+  margin:100px 0 0 100px;
+}
+.title{
+  margin:30px 30px 0px 30px;
+  background: white;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+.title-text{
+  font-size: 110%;
+}
+.chart-area{
+  display: flex;
+  justify-content: center;
 }

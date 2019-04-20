@@ -1,14 +1,14 @@
 <div class='wrapper'>
 <div class="stepper-wrap">
-<mat-horizontal-stepper>
+<mat-horizontal-stepper linear>
     <ng-template matStepperIcon="done" let-index="index"></ng-template>
-    <mat-step label="基本信息">
+    <mat-step label="基本信息" [stepControl]="firstFormGroup">
       <app-step1></app-step1>
     </mat-step>
-    <mat-step label="规格选择">
+    <mat-step label="规格选择" [stepControl]="secondFormGroup">
        <app-step2></app-step2>
     </mat-step>
-    <mat-step label="定向设置">
+    <mat-step label="定向设置" [stepControl]="thirdFormGroup">
       <app-step3></app-step3>
     </mat-step>
     <mat-step label="确认提交">

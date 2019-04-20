@@ -1,13 +1,16 @@
 <div class='wrapper'>
   <div class="front-row">
     <div class="company-name">
-      <span class='company'>广州宝洁有限公司</span>
+      <span class='company'>
+        <i class="material-icons">account_circle</i>
+        {{currentUser.companyName}}
+      </span>
     </div>
     <div class="total-money">
-      <span class='money-title'>可用余额(元)： <span class='number'>329842</span></span>
+      <span class='money-title'>可用余额(元)： <span class='number'>{{currentUser.balance}}</span></span>
     </div>
     <div class="today-cost-money">
-      <span class='money-title'>今日消耗(元)： <span class='number'>32432</span></span>
+      <span class='money-title'>今日消耗(元)： <span class='number'>{{todayCost}}</span></span>
     </div>
   </div>
   <div class='divider'>
@@ -15,6 +18,6 @@
     <mat-divider></mat-divider>
   </div>
   <div class="charts">
-      <div echarts [options]="chartOption" class="chart" style="width:650px;height:400px;"></div>
+      <div echarts [options]="chartOption" class="chart" style="width:800px;height:450px;"></div>
   </div>
 </div>

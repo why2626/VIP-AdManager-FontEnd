@@ -24,10 +24,10 @@
 </div>
 <p>档期ID</p>
 <div class='alignSite'>
-<form class="example-form">
+<form class="example-form" [formGroup]='stepTwoForm'>
     <mat-form-field class="example-full-width" class='item-id'>
-      <input matInput placeholder="档期ID" value="" [formControl]="itemId" required="" >
-      <mat-error *ngIf="itemId.invalid">{{getErrorMessage()}}</mat-error>
+      <input matInput placeholder="档期ID" formControlName="itemId" required="" >
+      <mat-error *ngIf="!stepTwoForm.get('itemId').value">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
 </form>
 </div>

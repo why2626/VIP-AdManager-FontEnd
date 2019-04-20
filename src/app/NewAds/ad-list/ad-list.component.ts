@@ -23,12 +23,18 @@ export class AdListComponent implements OnInit {
     .subscribe(res => {
       this.AdDataList = res;
       this.isLoadingResults = false;
+      for(let i=0;i<this.AdDataList.length;i++){
+        this.AdDataList[i].clickRate = this.toPercent(this.AdDataList[i].clickCount/this.AdDataList[i].exposure)
+      }
       console.log(this.AdDataList)
     }, err => {
       console.log(err);
       this.isLoadingResults = false;
     });
    // this.dataSource.paginator = this.paginator;
+  }
+  toPercent(num){
+    return Number(num*100).toFixed(1) + '%'
   }
   deleteAd(_id) {
     this.isLoadingResults = true;

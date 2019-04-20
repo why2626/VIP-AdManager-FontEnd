@@ -20,9 +20,11 @@ export class Ad{
   dayLimitPrice: number; //日限额
   turnedOn?: boolean // 开关
   status? : string //状态
-  spentMoney?: number //花费
+  clickRate?: string //点击率
   exposure?: number //曝光量
   clickCount? : number //点击量
+  clickCountPerHour?: number[]//每小时点击量
+  exposurePerHour? : number[]//每小时曝光量
   createTime: Date;
   userId: string;
 }

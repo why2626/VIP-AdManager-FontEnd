@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     currentUser: User;
     currentUserSubscription: Subscription;
     users: User[] = [];
+    todayCost = this.numFormat(6849)
 
     constructor(
         private authenticationService: AuthenticationService,
@@ -26,11 +27,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     ) {
         this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
             this.currentUser = user;
+            this.currentUser.balance = this.numFormat(this.currentUser.balance)
         });
     }
 
     ngOnInit() {
-        this.loadAllUsers();
     }
 
     ngOnDestroy() {
@@ -38,119 +39,90 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.currentUserSubscription.unsubscribe();
     }
 
-    deleteUser(id: number) {
-        this.userService.delete(id).pipe(first()).subscribe(() => {
-            this.loadAllUsers()
-        });
+    numFormat(num) {
+      var number = (num.toString().indexOf ('.') !== -1) ? num.toLocaleString() : num.toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+      return number;
     }
 
-    private loadAllUsers() {
-        this.userService.getAll().pipe(first()).subscribe(users => {
-            this.users = users;
-        });
-    }
+    colors = ['rgb(65,147,136)','rgb(166,71,61)', '#675bba'];
 
-  colors = ['#5793f3', '#d14a61', '#675bba'];
+    chartOption = {
+      color: this.colors,
 
-  chartOption = {
-    color: this.colors,
-
-    tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-            type: 'cross'
-        }
-    },
-    grid: {
-        right: '20%'
-    },
-    toolbox: {
-        feature: {
-            dataView: {show: true, readOnly: false},
-            restore: {show: true},
-            saveAsImage: {show: true}
-        }
-    },
-    legend: {
-        data:['蒸发量','降水量','平均温度']
-    },
-    xAxis: [
-        {
-            type: 'category',
-            axisTick: {
-                alignWithLabel: true
-            },
-            data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
-        }
-    ],
-    yAxis: [
-        {
-            type: 'value',
-            name: '蒸发量',
-            min: 0,
-            max: 250,
-            position: 'right',
-            axisLine: {
-                lineStyle: {
-                    color: this.colors[0]
-                }
-            },
-            axisLabel: {
-                formatter: '{value} ml'
-            }
-        },
-        {
-            type: 'value',
-            name: '降水量',
-            min: 0,
-            max: 250,
-            position: 'right',
-            offset: 80,
-            axisLine: {
-                lineStyle: {
-                    color: this.colors[1]
-                }
-            },
-            axisLabel: {
-                formatter: '{value} ml'
-            }
-        },
-        {
-            type: 'value',
-            name: '温度',
-            min: 0,
-            max: 25,
-            position: 'left',
-            axisLine: {
-                lineStyle: {
-                    color: this.colors[2]
-                }
-            },
-            axisLabel: {
-                formatter: '{value} °C'
-            }
-        }
-    ],
-    series: [
-        {
-            name:'蒸发量',
-            type:'bar',
-            data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-        },
-        {
-            name:'降水量',
-            type:'bar',
-            yAxisIndex: 1,
-            data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-        },
-        {
-            name:'平均温度',
-            type:'line',
-            yAxisIndex: 2,
-            data:[2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
-        }
-    ]
-};
+      tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+              type: 'cross'
+          }
+      },
+      grid: {
+          right: '20%'
+      },
+      toolbox: {
+          feature: {
+              dataView: {show: true, readOnly: false},
+              restore: {show: true},
+              saveAsImage: {show: true}
+          }
+      },
+      legend: {
+          data:['曝光亮(次)','点击量(次)']
+      },
+      xAxis: [
+          {
+              type: 'category',
+              axisTick: {
+                  alignWithLabel: true
+              },
+              data: ['00:00','02:00','04:00','06:00','08:00','10:00','12:00','14:00','16:00','18:00','20:00','22:00']
+          }
+      ],
+      yAxis: [
+          {
+              type: 'value',
+              name: '曝光亮(次)',
+              min: 0,
+              max: 250,
+              position: 'left',
+              axisLine: {
+                  lineStyle: {
+                      color: this.colors[0]
+                  }
+              },
+              axisLabel: {
+                  formatter: '{value}'
+              }
+          },
+          {
+              type: 'value',
+              name: '点击量(次)',
+              min: 0,
+              max: 250,
+              position: 'right',
+              axisLine: {
+                  lineStyle: {
+                      color: this.colors[1]
+                  }
+              },
+              axisLabel: {
+                  formatter: '{value}'
+              }
+          },
+      ],
+      series: [
+          {
+              name:'曝光亮(次)',
+              type:'line',
+              data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+          },
+          {
+              name:'点击量(次)',
+              type:'line',
+              yAxisIndex: 1,
+              data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+          },
+      ]
+  };
 
 
 }

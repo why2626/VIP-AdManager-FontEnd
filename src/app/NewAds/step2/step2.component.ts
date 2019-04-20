@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 import { gatherAdInfoService } from 'src/app/service/gatherAdInfo';
+import { adFormService } from 'src/app/service/adForm.service';
 
 export interface AdSite{
   id: number;
@@ -21,18 +22,26 @@ export class Step2Component implements OnInit {
     {id:2, value:'专题页'},
     {id:3, value:'档期页'}
   ]
-  itemId = new FormControl('',[Validators.required])
 
-  constructor(private gatherAdInfoService: gatherAdInfoService) { }
+  stepTwoForm
 
+  constructor(
+    private gatherAdInfoService: gatherAdInfoService,
+    private adformService: adFormService,
+    private formBuilder: FormBuilder) {
+      this.stepTwoForm = this.formBuilder.group({
+        itemId: ['', Validators.required],
+      })
+      this.adformService.formTwoReady(this.stepTwoForm)
+     }
   ngOnInit() {
   }
   getErrorMessage() {
-    return this.itemId.hasError('required') ? '档期id不能为空' : '';
+    return this.stepTwoForm.get('itemId').hasError('required') ? '档期id不能为空' : '';
   }
   emiting(){
     this.gatherAdInfoService.creatingAd.vipAPP = '唯品会APP' //投放站点
     this.gatherAdInfoService.creatingAd.linkType = this.adSites[this.selectedAdSite-1].value //落地页类型
-    this.gatherAdInfoService.creatingAd.linkID = this.itemId.value //落地页链接
+    this.gatherAdInfoService.creatingAd.linkID = this.stepTwoForm.get('itemId').value //落地页链接
   }
 }

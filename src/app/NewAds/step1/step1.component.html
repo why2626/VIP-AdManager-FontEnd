@@ -1,17 +1,15 @@
-<p>
-  新建广告
-</p>
+<p>新建广告</p>
 
+<form [formGroup]='stepOneForm'>
 <mat-form-field hintlabel="最多30个字" class='adNameInput alignside'>
-    <input matInput #input="" maxlength="30" placeholder="广告名称" [formControl]="adname" required="" class='adInput'>
-    <mat-hint align="end">{{input.value?.length || 0}}/30</mat-hint>
-    <mat-error *ngIf="adname.invalid">{{getErrorMessage()}}</mat-error>
+    <input matInput #input="" maxlength="30" placeholder="广告名称" formControlName="adname" required="" class='adInput'>
+    <mat-hint align="end">{{stepOneForm.get('adname').value?.length || 0}}/30</mat-hint>
+    <mat-error *ngIf="!stepOneForm.get('adname').value">{{getErrorMessage()}}</mat-error>
 </mat-form-field>
-
+</form>
 <div class='setTime'>
-    <p>
-        投放时间
-      </p>
+<p>投放时间</p>
+
 <mat-radio-group class='alignside' [(ngModel)]='isLongSet'>
     <mat-radio-button [value]='false'  >
        从今天开始长期
@@ -53,6 +51,7 @@
     </div>
   </div>
 </div>
+
 
 <div class='stepButtom'>
     <button mat-raised-button matStepperNext color='primary' class='nextBottom' (click)="emiting()">下一步</button>

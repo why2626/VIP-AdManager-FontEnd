@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Target } from 'src/app/models';
 import { TargetService } from 'src/app/service/target.service';
 import { gatherAdInfoService } from 'src/app/service/gatherAdInfo';
-import { FormControl, Validators } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
+import { adFormService } from 'src/app/service/adForm.service';
 
 @Component({
   selector: 'app-step3',
@@ -24,13 +25,19 @@ export class Step3Component implements OnInit {
   selectedDevice = '不限'
   pricingType = '点击(CPC)'
   compativeType = '实时竞价(RTB)'
-  adPrice = new FormControl('',[Validators.required])
-  dayLimit = new FormControl('',[Validators.required])
+  stepThreeForm
 
   constructor(
     private targetService: TargetService,
     private gatherAdInfoService: gatherAdInfoService,
-    ) { }
+    private adformService: adFormService,
+    private formBuilder: FormBuilder) {
+      this.stepThreeForm = this.formBuilder.group({
+        adPrice: ['', Validators.required],
+        dayLimit: ['', Validators.required],
+      })
+      this.adformService.formThreeReady(this.stepThreeForm)
+     }
 
   ngOnInit() {  //get list of targets immediately.
     this.targetService.getTargets()
@@ -69,8 +76,8 @@ export class Step3Component implements OnInit {
     this.gatherAdInfoService.creatingAd.divices = this.selectedDevice
     this.gatherAdInfoService.creatingAd.pricingType = this.pricingType
     this.gatherAdInfoService.creatingAd.compativeType = this.compativeType
-    this.gatherAdInfoService.creatingAd.dayLimitPrice = this.dayLimit.value
-    this.gatherAdInfoService.creatingAd.adPrice = this.adPrice.value
+    this.gatherAdInfoService.creatingAd.dayLimitPrice = this.stepThreeForm.get('dayLimit').value
+    this.gatherAdInfoService.creatingAd.adPrice = this.stepThreeForm.get('adPrice').value
     this.gatherAdInfoService.creatingAd.targets = this.selectedTarget
     this.gatherAdInfoService.showAdInfo()
   }

@@ -1,48 +1,67 @@
-<div class="loading-shade" *ngIf="isLoadingResults">
-  <mat-spinner [diameter]="50"></mat-spinner>
+<div class='title'>
+  <span class='title-text'>{{ ad.adName }}</span>
 </div>
-<div class="wrapper" *ngIf="!isLoadingResults">
-<div class="showInfoWrap" >
-  <div class="info">
-  <h3 style='color:black;padding-bottom: 20px'>详细信息</h3>
-  <p> 广告名称：   <span>{{ ad.adName }}</span></p>
-  <p *ngIf = '!ad.isEndDateSet'> 投放日期：  <span>{{ ad.startDate | date:'yyyy-MM-dd'}} - {{ ad.endDate | date:'yyyy-MM-dd'}} </span></p>
-  <p *ngIf = 'ad.isEndDateSet'> 投放日期：  <span>从 {{ ad.startDate | date:'yyyy-MM-dd'}} 开始长期 </span></p>
-  <p> 投放站点：    <span>{{ ad.vipAPP }}</span></p>
-  <p> 落地页类型：  <span>{{ ad.linkType }}</span></p>
-  <p> 落地页链接：  <span>{{ ad.linkID }}</span></p>
-  <p> 设备系统：    <span>{{ ad.divices }}</span></p>
-  <p> 出价方式：    <span>{{ ad.pricingType }}</span></p>
-  <p> 竞价方式：    <span>{{ ad.compativeType }}</span></p>
-  <p> 广告出价：    <span>{{ ad.adPrice }} 元/次点击</span></p>
-  <p> 日限额：      <span>{{ ad.dayLimitPrice }} 元</span></p>
-  <div class='targetWrap'>
-    <div><p style='margin-top:0'>选择人群：    </p></div>
-    <div>
-  <span class='showTargetsName' *ngFor="let target of ad.targets">{{target.targetName}}<br></span></div>
-  </div>
-  </div>
-  <div class='phoneArea' style='position: relative;'>
-      <div class='phone' style='background-image: url(/assets/img/phone.png);background-size: cover' >
-        <img *ngIf='selectedAdId==1' class='adImg' src='/assets/img/首页焦点第三四帧.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;z-index: 1;'>
-        <img *ngIf='selectedAdId==2' class='adImg' src='/assets/img/收藏顶部及物流页底部横幅.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
-        <img *ngIf='selectedAdId==3' class='adImg' src='/assets/img/个人设置页顶部轮播.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
-        <img *ngIf='selectedAdId==4' class='adImg' src='/assets/img/优惠券页顶部横幅.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
-        <img *ngIf='selectedAdId==5' class='adImg' src='/assets/img/美妆焦点第二帧.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
-        <img *ngIf='selectedAdId==6' class='adImg' src='/assets/img/美妆频道精彩活动运营位.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
+<mat-tab-group class='tab'>
+    <mat-tab label="数据概览">
+      <div class="charts">
+        <div class='chart-area'>
+          <div echarts [options]="chartOption" class="chart" style="width:800px;height:450px;"></div>
+        </div>
+          <div class='button-area'>
+              <button mat-raised-button (click)='goBack()' color="primary">返回</button>
+          </div>
       </div>
-        <img [src]='ad.uploadedImage' *ngIf='selectedAdId==1' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-365px;position: absolute;'>
-        <img [src]='ad.uploadedImage' *ngIf='selectedAdId==2' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-385px;position: absolute;'>
-        <img [src]='ad.uploadedImage' *ngIf='selectedAdId==3' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-420px;position: absolute;'>
-        <img [src]='ad.uploadedImage' *ngIf='selectedAdId==4' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-420px;position: absolute;'>
-        <img [src]='ad.uploadedImage' *ngIf='selectedAdId==5' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-400px;position: absolute;'>
-        <img [src]='ad.uploadedImage' *ngIf='selectedAdId==6' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-230px;position: absolute;'>
+    </mat-tab>
+    <mat-tab label="广告详情">
+          <div class="loading-shade" *ngIf="isLoadingResults">
+              <mat-spinner [diameter]="50"></mat-spinner>
+            </div>
+            <div class="wrapper" *ngIf="!isLoadingResults">
+            <div class="showInfoWrap" >
+              <div class="info">
+              <h3 style='color:black;padding-bottom: 20px'>详细信息</h3>
+              <p> 广告名称：   <span>{{ ad.adName }}</span></p>
+              <p *ngIf = '!ad.isEndDateSet'> 投放日期：  <span>{{ ad.startDate | date:'yyyy-MM-dd'}} - {{ ad.endDate | date:'yyyy-MM-dd'}} </span></p>
+              <p *ngIf = 'ad.isEndDateSet'> 投放日期：  <span>从 {{ ad.startDate | date:'yyyy-MM-dd'}} 开始长期 </span></p>
+              <p> 投放站点：    <span>{{ ad.vipAPP }}</span></p>
+              <p> 落地页类型：  <span>{{ ad.linkType }}</span></p>
+              <p> 落地页链接：  <span>{{ ad.linkID }}</span></p>
+              <p> 设备系统：    <span>{{ ad.divices }}</span></p>
+              <p> 出价方式：    <span>{{ ad.pricingType }}</span></p>
+              <p> 竞价方式：    <span>{{ ad.compativeType }}</span></p>
+              <p> 广告出价：    <span>{{ ad.adPrice }} 元/次点击</span></p>
+              <p> 日限额：      <span>{{ ad.dayLimitPrice }} 元</span></p>
+              <div class='targetWrap'>
+                <div><p style='margin-top:0'>选择人群：    </p></div>
+                <div>
+              <span class='showTargetsName' *ngFor="let target of ad.targets">{{target.targetName}}<br></span></div>
+              </div>
+              </div>
+              <div class='phoneArea' style='position: relative;'>
+                  <div class='phone' style='background-image: url(/assets/img/phone.png);background-size: cover' >
+                    <img *ngIf='selectedAdId==1' class='adImg' src='/assets/img/首页焦点第三四帧.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;z-index: 1;'>
+                    <img *ngIf='selectedAdId==2' class='adImg' src='/assets/img/收藏顶部及物流页底部横幅.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
+                    <img *ngIf='selectedAdId==3' class='adImg' src='/assets/img/个人设置页顶部轮播.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
+                    <img *ngIf='selectedAdId==4' class='adImg' src='/assets/img/优惠券页顶部横幅.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
+                    <img *ngIf='selectedAdId==5' class='adImg' src='/assets/img/美妆焦点第二帧.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
+                    <img *ngIf='selectedAdId==6' class='adImg' src='/assets/img/美妆频道精彩活动运营位.png' width='222px' height='387.88px' style='padding-left:17px;padding-top:48px;'>
+                  </div>
+                    <img [src]='ad.uploadedImage' *ngIf='selectedAdId==1' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-365px;position: absolute;'>
+                    <img [src]='ad.uploadedImage' *ngIf='selectedAdId==2' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-385px;position: absolute;'>
+                    <img [src]='ad.uploadedImage' *ngIf='selectedAdId==3' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-420px;position: absolute;'>
+                    <img [src]='ad.uploadedImage' *ngIf='selectedAdId==4' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-420px;position: absolute;'>
+                    <img [src]='ad.uploadedImage' *ngIf='selectedAdId==5' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-400px;position: absolute;'>
+                    <img [src]='ad.uploadedImage' *ngIf='selectedAdId==6' style='width:222px; z-index: 999; margin-left: 17px;margin-top:-230px;position: absolute;'>
 
-  </div>
-  </div>
-  <div class='button-area'>
-    <button mat-raised-button (click)='goBack()' color="primary">返回</button>
-    <button mat-stroked-button (click)='deleteAd(ad._id)' class='delete-button'>删除</button>
-  </div>
-</div>
+              </div>
+              </div>
+              </div>
+              <div class='button-area'>
+                  <button mat-raised-button (click)='goBack()' color="primary">返回</button>
+                  <button mat-stroked-button (click)='deleteAd(ad._id)' class='delete-button'>删除</button>
+              </div>
+    </mat-tab>
+  </mat-tab-group>
+
+
 
