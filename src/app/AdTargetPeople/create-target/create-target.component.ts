@@ -116,7 +116,6 @@ export class CreateTargetComponent implements OnInit {
     valUserBtn_1(event: string){
       this.userBtn_1 = `${event}`
       this.targetForm.controls['userBtn_1'].patchValue(this.userBtn_1)
-      console.log(this.userBtn_1)
    }
    valUserBtn_2(event: string){
       this.userBtn_2 = `${event}`
@@ -182,7 +181,7 @@ export class CreateTargetComponent implements OnInit {
    }
 
     estimatePeopel(){
-      this.peopleEstimate = this.RandomNum(20000, 100000)
+      this.peopleEstimate = this.RandomNum(10000, 1000000)
       this.targetForm.controls['peopleEstimate'].patchValue(this.peopleEstimate)
    }
 

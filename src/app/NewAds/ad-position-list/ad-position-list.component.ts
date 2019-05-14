@@ -126,7 +126,6 @@ export class AdPositionListComponent implements OnInit {
             this.alertMessage = "图片尺寸应为"+width+"x"+height+", 请重新上传"
             return false
         }
-        console.log(this.picSrc)
         this.gatherAdInfoService.creatingAd.uploadedImage = this.picSrc
         this.alertMessage = ''
       }

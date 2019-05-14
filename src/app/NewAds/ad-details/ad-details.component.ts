@@ -17,7 +17,7 @@ ad : Ad = {
   isEndDateSet: true, //是否有设置从今天开始长期
   startDate: null, //投放开始日期
   endDate: null, //投放结束日期
-  vipAPP: '', //投放站点
+  appPoint: '', //投放站点
   adPosition: null, //资源位
   uploadedImage: '', //图片
   linkType: '', //落地页类型
@@ -40,20 +40,36 @@ ad : Ad = {
 }
   isLoadingResults = true
   selectedAdId: number
+  clickCountPerHour = []//每小时点击量
+  exposurePerHour = [] //每小时曝光量
 
   constructor(private route: ActivatedRoute, private AdService: AdService, private router: Router) { }
 
   ngOnInit() {
         //Call that function when the component is initiated.
        this.getAdDetails(this.route.snapshot.params['id']);
+       this.chartOption
+
+       for(let i=0;i<5;i++){
+        this.clickCountPerHour.push(this.RandomNum(1000,3000))
+        this.exposurePerHour.push(this.RandomNum(10000,300000))
+       }
+       for(let i=5;i<11;i++){
+        this.clickCountPerHour.push(this.RandomNum(8000,20000))
+        this.exposurePerHour.push(this.RandomNum(500000,3000000))
+       }
+       for(let i=11;i<12;i++){
+        this.clickCountPerHour.push(this.RandomNum(3000,8000))
+        this.exposurePerHour.push(this.RandomNum(80000,800000))
+       }
+       this.chartOption.series[0].data = this.exposurePerHour
+       this.chartOption.series[1].data = this.clickCountPerHour
   }
   getAdDetails(_id) {
     this.AdService.getAd(_id)
       .subscribe(res => {
         this.ad = res
         this.selectedAdId = this.ad.adPosition[0].id
-        console.log(this.ad.adPosition)
-        console.log(this.selectedAdId)
         this.isLoadingResults = false
       }, err => {
         console.log(err)
@@ -118,7 +134,7 @@ ad : Ad = {
             type: 'value',
             name: '曝光亮(次)',
             min: 0,
-            max: 250,
+            scale: true,
             position: 'left',
             axisLine: {
                 lineStyle: {
@@ -133,7 +149,7 @@ ad : Ad = {
             type: 'value',
             name: '点击量(次)',
             min: 0,
-            max: 250,
+            scale: true,
             position: 'right',
             axisLine: {
                 lineStyle: {
@@ -149,13 +165,13 @@ ad : Ad = {
         {
             name:'曝光亮(次)',
             type:'line',
-            data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+            data: []
         },
         {
             name:'点击量(次)',
             type:'line',
             yAxisIndex: 1,
-            data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+             data: []
         },
     ]
 };

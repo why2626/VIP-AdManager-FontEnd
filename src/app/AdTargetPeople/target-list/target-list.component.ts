@@ -25,6 +25,10 @@ export class TargetListComponent implements OnInit {
     .subscribe(res => {
       this.data = res;
       this.isLoadingResults = false;
+      for(let i=0;i<this.data.length;i++){
+        this.data[i].peopleEstimate = this.numFormat(this.data[i].peopleEstimate)
+      }
+      console.log(this.data)
     }, err => {
       console.log(err);
       this.isLoadingResults = false;
@@ -42,6 +46,10 @@ export class TargetListComponent implements OnInit {
           this.isLoadingResults = false;
         }
       );
+  }
+  numFormat(num) {
+    var number = (num.toString().indexOf ('.') !== -1) ? num.toLocaleString() : num.toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+    return number;
   }
 
 }

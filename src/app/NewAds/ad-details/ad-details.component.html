@@ -23,7 +23,7 @@
               <p> 广告名称：   <span>{{ ad.adName }}</span></p>
               <p *ngIf = '!ad.isEndDateSet'> 投放日期：  <span>{{ ad.startDate | date:'yyyy-MM-dd'}} - {{ ad.endDate | date:'yyyy-MM-dd'}} </span></p>
               <p *ngIf = 'ad.isEndDateSet'> 投放日期：  <span>从 {{ ad.startDate | date:'yyyy-MM-dd'}} 开始长期 </span></p>
-              <p> 投放站点：    <span>{{ ad.vipAPP }}</span></p>
+              <p> 投放站点：    <span>{{ ad.appPoint }}</span></p>
               <p> 落地页类型：  <span>{{ ad.linkType }}</span></p>
               <p> 落地页链接：  <span>{{ ad.linkID }}</span></p>
               <p> 设备系统：    <span>{{ ad.divices }}</span></p>

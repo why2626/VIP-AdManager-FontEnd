@@ -6,10 +6,10 @@ export class Ad{
   adName: string; //广告名称
   isEndDateSet: boolean; //是否有设置从今天开始长期
   startDate: Date; //投放开始日期
-  endDate: Date; //投放结束日期
-  vipAPP: string; //投放站点
+  endDate?: Date; //投放结束日期
+  appPoint : string; //投放站点
   adPosition: AdPosition; //资源位
-  uploadedImage?: string; //图片
+  uploadedImage: string; //图片
   linkType: string; //落地页类型
   linkID: string; //落地页链接
   targets: Target[]; //人群包

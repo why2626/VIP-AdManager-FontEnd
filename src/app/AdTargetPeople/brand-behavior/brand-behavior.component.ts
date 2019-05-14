@@ -31,7 +31,6 @@ export class BrandBehaviorComponent implements OnInit {
   valButton_1(event: string){
     this.btn_1_val = `${event}`;
     this.brand_button_1.emit(this.btn_1_val)
-    console.log(this.btn_1_val)
   }
   valButton_2(event: string){
     this.btn_2_val = `${event}`;

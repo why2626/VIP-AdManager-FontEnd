@@ -44,6 +44,9 @@ export class Step3Component implements OnInit {
     .subscribe(res => {
       this.data = res;
       this.isLoadingResults = false;
+      // for(let i=0;i<this.data.length;i++){
+      //   this.data[i].peopleEstimate = this.numFormat(this.data[i].peopleEstimate)
+      // }
     }, err => {
       console.log(err);
       this.isLoadingResults = false;
@@ -71,6 +74,10 @@ export class Step3Component implements OnInit {
 
     this.selectedLength = 0 //先清空
     this.selectedLength = this.selection.selected.length
+  }
+  numFormat(num) {
+    var number = (num.toString().indexOf ('.') !== -1) ? num.toLocaleString() : num.toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+    return number;
   }
   emiting(){
     this.gatherAdInfoService.creatingAd.divices = this.selectedDevice

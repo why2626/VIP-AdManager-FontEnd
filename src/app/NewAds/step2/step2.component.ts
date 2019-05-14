@@ -40,7 +40,7 @@ export class Step2Component implements OnInit {
     return this.stepTwoForm.get('itemId').hasError('required') ? '档期id不能为空' : '';
   }
   emiting(){
-    this.gatherAdInfoService.creatingAd.vipAPP = '唯品会APP' //投放站点
+    this.gatherAdInfoService.creatingAd.appPoint = '亚麻荨APP' //投放站点
     this.gatherAdInfoService.creatingAd.linkType = this.adSites[this.selectedAdSite-1].value //落地页类型
     this.gatherAdInfoService.creatingAd.linkID = this.stepTwoForm.get('itemId').value //落地页链接
   }

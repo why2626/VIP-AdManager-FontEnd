@@ -9,7 +9,7 @@ import { AuthenticationService } from './service/authentication.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = '唯品会营销平台';
+  title = '亚麻荨营销平台';
   currentUser: User;
 
   constructor(

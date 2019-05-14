@@ -15,7 +15,7 @@ export class Step4Component implements OnInit {
   startDate: Date
   endDate: Date
   isEndDateSet: boolean
-  vipAPP: string //投放站点
+  appPoint: string //投放站点
   linkType: string //落地页类型
   linkID: string //落地页链接
   device: string //设备系统
@@ -44,7 +44,7 @@ export class Step4Component implements OnInit {
     this.isEndDateSet = this.gatherAdInfoService.creatingAd.isEndDateSet
     this.startDate = this.gatherAdInfoService.creatingAd.startDate
     this.endDate = this.gatherAdInfoService.creatingAd.endDate
-    this.vipAPP = this.gatherAdInfoService.creatingAd.vipAPP
+    this.appPoint = this.gatherAdInfoService.creatingAd.appPoint
     this.linkType = this.gatherAdInfoService.creatingAd.linkType
     this.linkID = this.gatherAdInfoService.creatingAd.linkID
     this.device = this.gatherAdInfoService.creatingAd.divices

@@ -20,6 +20,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     currentUserSubscription: Subscription;
     users: User[] = [];
     todayCost = this.numFormat(6849)
+    clickCountPerHour = []//每小时点击量
+    exposurePerHour = [] //每小时曝光量
+
 
     constructor(
         private authenticationService: AuthenticationService,
@@ -32,6 +35,23 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+      this.chartOption
+
+      for(let i=0;i<5;i++){
+       this.clickCountPerHour.push(this.RandomNum(10000,30000))
+       this.exposurePerHour.push(this.RandomNum(100000,3000000))
+      }
+      for(let i=5;i<11;i++){
+       this.clickCountPerHour.push(this.RandomNum(80000,200000))
+       this.exposurePerHour.push(this.RandomNum(5000000,30000000))
+      }
+      for(let i=11;i<12;i++){
+       this.clickCountPerHour.push(this.RandomNum(30000,80000))
+       this.exposurePerHour.push(this.RandomNum(800000,8000000))
+      }
+      this.chartOption.series[0].data = this.exposurePerHour
+      this.chartOption.series[1].data = this.clickCountPerHour
+
     }
 
     ngOnDestroy() {
@@ -43,6 +63,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       var number = (num.toString().indexOf ('.') !== -1) ? num.toLocaleString() : num.toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
       return number;
     }
+    RandomNum(min, max) {
+      return Math.floor(Math.random() * (max - min)) === min  ? (min + 1) : Math.floor(Math.random() * (max - min)) + min
+     }
 
     colors = ['rgb(65,147,136)','rgb(166,71,61)', '#675bba'];
 
@@ -82,7 +105,7 @@ export class HomeComponent implements OnInit, OnDestroy {
               type: 'value',
               name: '曝光亮(次)',
               min: 0,
-              max: 250,
+              scale: true,
               position: 'left',
               axisLine: {
                   lineStyle: {
@@ -97,7 +120,7 @@ export class HomeComponent implements OnInit, OnDestroy {
               type: 'value',
               name: '点击量(次)',
               min: 0,
-              max: 250,
+              scale: true,
               position: 'right',
               axisLine: {
                   lineStyle: {
@@ -113,13 +136,13 @@ export class HomeComponent implements OnInit, OnDestroy {
           {
               name:'曝光亮(次)',
               type:'line',
-              data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+              data: []
           },
           {
               name:'点击量(次)',
               type:'line',
               yAxisIndex: 1,
-              data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+               data: []
           },
       ]
   };
